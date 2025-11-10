@@ -1,0 +1,68 @@
+import { ref, computed } from 'vue';
+import { defineStore } from 'pinia';
+import type { LoginRequest } from './auth.interface';
+import { loginApi, logoutApi } from '../api/auth.request';
+
+export const useAuthStore = defineStore('auth', () => {
+    const loading = ref<boolean>(false);
+    const error = ref<string | null>(null);
+    const token = ref<string | null>(null);
+
+    const isAuth = computed(() => {
+        if (token.value) {
+            return true;
+        }
+
+        token.value = localStorage.getItem('authToken');
+
+        if (token.value) {
+            return true;
+        }
+
+        return false;
+    });
+
+    const setToken = (value: string) => {
+        localStorage.setItem('authToken', value);
+        token.value = value;
+    };
+
+    const clearToken = () => {
+        localStorage.removeItem('authToken');
+        token.value = null;
+    };
+
+    const login = async (userData: LoginRequest) => {
+        loading.value = true;
+        error.value = null;
+
+        try {
+            const token = await loginApi(userData);
+            setToken(token);
+            return true;
+        } catch (err) {
+            console.error('Login error:', err);
+            error.value = 'Login Error';
+        } finally {
+            loading.value = false;
+        }
+    };
+
+    const logout = async () => {
+        loading.value = true;
+        error.value = null;
+
+        try {
+            await logoutApi();
+            clearToken();
+            return true;
+        } catch (err) {
+            console.error('Logout error:', err);
+            error.value = 'Logout Error';
+        } finally {
+            loading.value = false;
+        }
+    };
+
+    return { login, logout, isAuth, loading, error };
+});

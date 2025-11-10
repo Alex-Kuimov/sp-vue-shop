@@ -1,14 +1,10 @@
 export const ROUTES = {
     HOME: {
         PATH: '/',
-        NAME: 'Home',
+        NAME: 'home',
     },
     LOGIN: {
         PATH: '/login',
-        NAME: 'Login',
+        NAME: 'login',
     },
-    LOGOUT: {
-        PATH: '/logout',
-        NAME: 'Logout',
-    }
 }

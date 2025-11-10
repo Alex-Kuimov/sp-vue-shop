@@ -6,5 +6,9 @@ export const ROUTES = {
     LOGIN: {
         PATH: '/login',
         NAME: 'Login',
+    },
+    LOGOUT: {
+        PATH: '/logout',
+        NAME: 'Logout',
     }
 }

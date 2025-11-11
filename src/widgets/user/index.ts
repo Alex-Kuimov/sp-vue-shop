@@ -1,0 +1,1 @@
+export { default as UserListWidget } from './ui/UserListWidget.vue';

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import { ROUTES } from '@/shared/routes';
-import { useAuthStore } from '@/features/auth/model/auth.store';
 
 // Определяем маршруты с использованием layout-компонентов и meta-информацией
 const routes: RouteRecordRaw[] = [
@@ -52,23 +51,6 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
 	history: createWebHistory(),
 	routes
-});
-
-// Навигационный guard с использованием meta.requiresAuth
-router.beforeEach((to, _from, next) => {
-	const authStore = useAuthStore();
-
-	const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
-	if (requiresAuth && !authStore.isAuth) {
-		next(ROUTES.LOGIN.PATH);
-	}
-
-	if (!requiresAuth  && authStore.isAuth) {
-		next(ROUTES.HOME.PATH);
-	}
-
-	next();
 });
 
 export default router;

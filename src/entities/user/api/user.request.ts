@@ -1,6 +1,6 @@
 import { http } from '@/shared/api';
 import { USER_API } from './user.routes';
-import type { User, UserCreateDTO } from '../model/user.interface';
+import type { User, UserCreateDTO, UserUpdateDTO } from '../model/user.interface';
 
 const getUser = async (id: number) => {
     const { data } = await http.get<User>(USER_API.detail(id));
@@ -17,4 +17,9 @@ const createUser = async (user: UserCreateDTO) => {
     return res.data;
 }
 
-export { getUser, getUsers, createUser };
+const updateUser = async (id: number, user: UserUpdateDTO) => {
+    const res = await http.put<{ data: User }>(USER_API.update(id), user);
+    return res.data;
+}
+
+export { getUser, getUsers, createUser, updateUser };

@@ -1,14 +1,13 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import type { User, UserCreateDTO } from './user.interface';
-import { getUser, getUsers, createUser } from '../api/user.request';
+import type { User, UserCreateDTO, UserUpdateDTO } from './user.interface';
+import { getUser, getUsers, createUser, updateUser } from '../api/user.request';
 
 export const useUserStore = defineStore('user', () => {
-    const item = ref<User | null>(null);
     const items = ref<User[] | null>(null);
 
     const getItem = async (id: number) => {
-        item.value = await getUser(id);
+        return await getUser(id);
     };
 
     const getItems = async () => {
@@ -18,8 +17,13 @@ export const useUserStore = defineStore('user', () => {
 
     const createItem = async (data: UserCreateDTO) => {
         const res = await createUser(data);
-        item.value = res.data;
+        return res.data;
     };
 
-    return { item, items, getItem, getItems, createItem };
+    const updateItem = async (id: number, data: UserUpdateDTO) => {
+        const res = await updateUser(id, data);
+        return res.data;
+    };
+
+    return { items, getItem, getItems, createItem, updateItem };
 });

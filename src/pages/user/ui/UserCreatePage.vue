@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/entities/user/model';
 import { useRouter } from 'vue-router';
-import { UserForm } from '@/entities/user/ui';
+import { UserCreateForm } from '@/entities/user/ui';
 import { ROUTES } from '@/shared/routes';
 import type { UserCreateDTO } from '@/entities/user/model'
 
@@ -20,7 +20,7 @@ const handleCreate = async (formData: UserCreateDTO) => {
 
 <template>
     <p>Новый пользователь</p>
-    <UserForm @submit="handleCreate" />
+    <UserCreateForm mode="create" @submit="handleCreate" />
 </template>
 
 <style scoped></style>

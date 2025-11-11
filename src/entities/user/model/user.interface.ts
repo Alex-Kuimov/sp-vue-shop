@@ -14,3 +14,8 @@ export interface UserCreateDTO {
     password_confirmation: string
     role: string
 }
+
+export interface UserUpdateDTO {
+    name: string
+    email: string
+}

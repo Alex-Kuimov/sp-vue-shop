@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-    id: number | null
+    id: number
     name: string
     email: string
     role: string

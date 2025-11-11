@@ -3,7 +3,7 @@ import { USER_API } from './user.routes';
 import type { User } from '../model/user.interface';
 
 const getUser = async (id: number) => {
-    const { data } = await http.get<User>(USER_API.profile(id));
+    const { data } = await http.get<User>(USER_API.detail(id));
     return data;
 }
 

@@ -1,18 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useUserStore } from '@/entities/user';
 import UserCard from '@/entities/user/ui/UserCard.vue';
+import type { User } from '@/entities/user'
 
-const userStore = useUserStore();
-
-onMounted(async () => {
-    userStore.getItems();
-});
+const { users } = defineProps<{ users: User[] | null }>();
 
 </script>
 <template>
     <p>Я виджет списка пользователей</p>
 
-    <UserCard v-for="user in userStore.items" v-bind="user" />
+    <UserCard v-for="user in users" v-bind="user" />
 </template>
 <style scoped></style>

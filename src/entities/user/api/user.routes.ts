@@ -1,4 +1,5 @@
 export const USER_API = {
-    profile: (id: number) => `/api/users/${id}`,
+    detail: (id: number) => `/api/users/${id}`,
     list: () => `/api/users`,
+    create: () => `/api/users`,
 } 

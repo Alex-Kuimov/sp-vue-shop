@@ -1,33 +1,52 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import { ROUTES } from '@/shared/routes';
 import { useAuthStore } from '@/features/auth/model/auth.store';
 
-const routes = [
-	{
-		path: ROUTES.HOME.PATH,
-		name: ROUTES.HOME.NAME,
-		component: () => import('@/pages/home/ui/HomePage.vue'),
-	},
+// Определяем маршруты с использованием layout-компонентов и meta-информацией
+const routes: RouteRecordRaw[] = [
 	{
 		path: ROUTES.LOGIN.PATH,
-		name: ROUTES.LOGIN.NAME,
-		component: () => import('@/pages/auth/ui/LoginPage.vue'),
+		component: () => import('@/app/layout/AuthLayout.vue'),
+		meta: {
+			requiresAuth: false
+		},
+		children: [
+			{
+				path: ROUTES.LOGIN.PATH,
+				name: ROUTES.LOGIN.NAME,
+				component: () => import('@/pages/auth/ui/LoginPage.vue'),
+			}
+		]
 	},
 	{
-		path: ROUTES.USERS.PATH,
-		name: ROUTES.USERS.NAME,
-		component: () => import('@/pages/user/ui/UserListPage.vue'),
-	},
-	{
-		path: ROUTES.USER_CREATE.PATH,
-		name: ROUTES.USER_CREATE.NAME,
-		component: () => import('@/pages/user/ui/UserCreatePage.vue'),
-	},
-	{
-		path: ROUTES.USER_EDIT.PATH,
-		name: ROUTES.USER_EDIT.NAME,
-		component: () => import('@/pages/user/ui/UserEditPage.vue'),
-	},
+		path: ROUTES.HOME.PATH,
+		component: () => import('@/app/layout/MainLayout.vue'),
+		meta: {
+			requiresAuth: true
+		},
+		children: [
+			{
+				name: ROUTES.HOME.NAME,
+				path: ROUTES.HOME.PATH,
+				component: () => import('@/pages/home/ui/HomePage.vue')
+			},
+			{
+				name: ROUTES.USERS.NAME,
+				path: ROUTES.USERS.PATH,
+				component: () => import('@/pages/user/ui/UserListPage.vue')
+			},
+			{
+				name: ROUTES.USER_CREATE.NAME,
+				path: ROUTES.USER_CREATE.PATH,
+				component: () => import('@/pages/user/ui/UserCreatePage.vue')
+			},
+			{
+				name: ROUTES.USER_EDIT.NAME,
+				path: ROUTES.USER_EDIT.PATH,
+				component: () => import('@/pages/user/ui/UserEditPage.vue')
+			}
+		]
+	}
 ];
 
 const router = createRouter({
@@ -35,19 +54,18 @@ const router = createRouter({
 	routes
 });
 
+// Навигационный guard с использованием meta.requiresAuth
 router.beforeEach((to, _from, next) => {
 	const authStore = useAuthStore();
 
-	if (to.name === ROUTES.LOGIN.NAME && authStore.isAuth) {
-		next(ROUTES.HOME.PATH);
+	const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+	if (requiresAuth && !authStore.isAuth) {
+		next(ROUTES.LOGIN.PATH);
 	}
 
-	if ((to.name === ROUTES.HOME.NAME ||
-		to.name === ROUTES.USERS.NAME ||
-		to.name === ROUTES.USER_CREATE.NAME ||
-		to.name === ROUTES.USER_EDIT.NAME) &&
-		!authStore.isAuth) {
-		next(ROUTES.LOGIN.PATH);
+	if (!requiresAuth  && authStore.isAuth) {
+		next(ROUTES.HOME.PATH);
 	}
 
 	next();

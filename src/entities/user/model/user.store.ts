@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import type { User } from './user.interface';
-import { getUser, getUsers } from '../api/user.request';
+import type { User, UserCreateDTO } from './user.interface';
+import { getUser, getUsers, createUser } from '../api/user.request';
 
 export const useUserStore = defineStore('user', () => {
     const item = ref<User | null>(null);
@@ -16,5 +16,10 @@ export const useUserStore = defineStore('user', () => {
         items.value = res.data;
     };
 
-    return { item, items, getItem, getItems };
+    const createItem = async (data: UserCreateDTO) => {
+        const res = await createUser(data);
+        item.value = res.data;
+    };
+
+    return { item, items, getItem, getItems, createItem };
 });

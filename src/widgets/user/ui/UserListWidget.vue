@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UserCard from '@/entities/user/ui/UserCard.vue';
+import { UserCard } from '@/entities/user/'
 import type { User } from '@/entities/user'
 
 const { users } = defineProps<{ users: User[] | null }>();

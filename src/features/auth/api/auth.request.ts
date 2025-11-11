@@ -1,4 +1,4 @@
-import { http } from '@/shared/api';
+import { http } from '@/shared/api/';
 import { API } from './auth.routes';
 import type { LoginRequest } from '../model/auth.interface';
 

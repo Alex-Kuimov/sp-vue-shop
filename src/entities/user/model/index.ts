@@ -1,2 +1,2 @@
-export type { User } from './user.interface';
+export type { User, UserCreateDTO } from './user.interface';
 export { useUserStore } from './user.store';

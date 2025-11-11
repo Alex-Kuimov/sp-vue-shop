@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { UserCreateDTO } from '@/entities/user/model/user.interface';
+import type { UserCreateDTO } from '@/entities/user/model/';
 
 const emit = defineEmits<{
     (e: 'submit', data: UserCreateDTO): void

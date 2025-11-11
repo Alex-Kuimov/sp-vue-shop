@@ -1,1 +1,2 @@
-export { default as App } from './App.vue';
+export { default as MainLayout } from './MainLayout.vue';
+export { default as AuthLayout } from './AuthLayout.vue';

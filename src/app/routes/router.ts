@@ -18,6 +18,16 @@ const routes = [
 		name: ROUTES.USERS.NAME,
 		component: () => import('@/pages/user/ui/UserListPage.vue'),
 	},
+	{
+		path: ROUTES.USER_CREATE.PATH,
+		name: ROUTES.USER_CREATE.NAME,
+		component: () => import('@/pages/user/ui/UserCreatePage.vue'),
+	},
+	{
+		path: ROUTES.USER_EDIT.PATH,
+		name: ROUTES.USER_EDIT.NAME,
+		component: () => import('@/pages/user/ui/UserEditPage.vue'),
+	},
 ];
 
 const router = createRouter({
@@ -27,12 +37,16 @@ const router = createRouter({
 
 router.beforeEach((to, _from, next) => {
 	const authStore = useAuthStore();
-	
+
 	if (to.name === ROUTES.LOGIN.NAME && authStore.isAuth) {
 		next(ROUTES.HOME.PATH);
 	}
 
-	if (to.name === ROUTES.HOME.NAME && !authStore.isAuth) {
+	if ((to.name === ROUTES.HOME.NAME ||
+		to.name === ROUTES.USERS.NAME ||
+		to.name === ROUTES.USER_CREATE.NAME ||
+		to.name === ROUTES.USER_EDIT.NAME) &&
+		!authStore.isAuth) {
 		next(ROUTES.LOGIN.PATH);
 	}
 

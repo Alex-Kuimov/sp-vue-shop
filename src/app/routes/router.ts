@@ -13,6 +13,11 @@ const routes = [
 		name: ROUTES.LOGIN.NAME,
 		component: () => import('@/pages/auth/ui/LoginPage.vue'),
 	},
+	{
+		path: ROUTES.USERS.PATH,
+		name: ROUTES.USERS.NAME,
+		component: () => import('@/pages/user/ui/UserListPage.vue'),
+	},
 ];
 
 const router = createRouter({

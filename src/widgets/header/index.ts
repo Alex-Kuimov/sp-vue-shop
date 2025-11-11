@@ -1,0 +1,1 @@
+export { default as HeaderWidgets } from './ui/HeaderWidgets.vue';

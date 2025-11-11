@@ -7,4 +7,8 @@ export const ROUTES = {
         PATH: '/login',
         NAME: 'login',
     },
+    USERS: {
+        PATH: '/users',
+        NAME: 'user',
+    },
 }

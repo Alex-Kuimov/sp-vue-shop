@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useUserStore } from '@/entities/user';
+import { useUserStore } from '@/entities/user/model';
 import { useRouter } from 'vue-router';
-import { UserForm } from '@/entities/user/';
+import { UserForm } from '@/entities/user/ui';
 import { ROUTES } from '@/shared/routes';
 
 const userStore = useUserStore();

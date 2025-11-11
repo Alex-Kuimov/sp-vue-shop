@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserCard } from '@/entities/user/'
-import type { User } from '@/entities/user'
+import { UserCard } from '@/entities/user/ui'
+import type { User } from '@/entities/user/model'
 
 const { users } = defineProps<{ users: User[] | null }>();
 

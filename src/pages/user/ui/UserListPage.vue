@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { UserListWidget } from '@/widgets/user/';
-import { useUserStore } from '@/entities/user';
+import { useUserStore } from '@/entities/user/model';
 
 const userStore = useUserStore();
 

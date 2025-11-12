@@ -24,7 +24,7 @@ onMounted(async () => {
         name: item.name,
         email: item.email
     }
-})
+});
 </script>
 
 <template>
@@ -32,4 +32,6 @@ onMounted(async () => {
     <UserUpdateForm :user="user" :errors="userStore.errors" @submit="handleEdit" />
 
     <Loader v-if="userStore.loading" />
+
+    {{ userStore.error }}
 </template>

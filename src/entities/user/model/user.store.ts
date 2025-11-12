@@ -2,12 +2,13 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import type { User, UserCreateDTO, UserUpdateDTO } from './user.interface';
 import { getUser, getUsers, createUser, updateUser } from '../api/user.request';
-import type { ApiError } from '@/shared/api/';
+import { extractApiError } from '@/shared/api';
+
 
 export const useUserStore = defineStore('user', () => {
     const items = ref<User[] | null>(null);
     const loading = ref(false);
-    const error = ref<ApiError | null>(null);
+    const error = ref<string | null>(null);
     const errors = ref<Record<string, string[]> | null>(null);
 
     const getItem = async (id: number) => {
@@ -15,8 +16,10 @@ export const useUserStore = defineStore('user', () => {
             loading.value = true;
             error.value = null;
             return await getUser(id);
-        } catch (err) {
-            error.value = err as ApiError;
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            errors.value = apiError.errors ?? null;
             throw err;
         } finally {
             loading.value = false;
@@ -29,8 +32,10 @@ export const useUserStore = defineStore('user', () => {
             error.value = null;
             const res = await getUsers();
             items.value = res.data;
-        } catch (err) {
-            error.value = err as ApiError;
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            errors.value = apiError.errors ?? null;
             throw err;
         } finally {
             loading.value = false;
@@ -43,8 +48,10 @@ export const useUserStore = defineStore('user', () => {
             error.value = null;
             const res = await createUser(data);
             return res.data;
-        } catch (err) {
-            error.value = err as ApiError;
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            errors.value = apiError.errors ?? null;
             throw err;
         } finally {
             loading.value = false;
@@ -57,15 +64,10 @@ export const useUserStore = defineStore('user', () => {
             error.value = null;
             const res = await updateUser(id, data);
             return res.data;
-        } catch (err) {
-            const apiError = err as ApiError;
-
-            error.value = apiError;
-
-            if (apiError.errors) {
-                errors.value = apiError.errors;
-            }
-
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            errors.value = apiError.errors ?? null;
             throw err;
         } finally {
             loading.value = false;

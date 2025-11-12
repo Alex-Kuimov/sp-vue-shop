@@ -34,13 +34,13 @@ const handleSubmit = () => {
         <FormField>
             <Label for="name">Имя:</Label>
             <Input v-model="form.name" id="name" type="text" :class="props.errors?.name ? 'err' : ''" required />
-            <ErrorMessage :error="props.errors?.name" />
+            <ErrorMessage :error="props.errors?.name?.[0] ?? null" />
         </FormField>
 
         <FormField>
             <Label for="email">Email:</Label>
             <Input v-model="form.email" id="email" type="email" :class="props.errors?.email ? 'err' : ''" required />
-            <ErrorMessage :error="props.errors?.email" />
+            <ErrorMessage :error="props.errors?.email?.[0] ?? null" />
         </FormField>
 
         <Button type="submit">Сохранить</Button>

@@ -1,2 +1,2 @@
 export { http } from './http';
-export { ApiError } from './ApiError';
+export { extractApiError } from './errors';

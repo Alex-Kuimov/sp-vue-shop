@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Input, Button, Label, Form, FormField } from "@/shared/ui";
+import { Input, Button, Label, Form, FormField, Select } from "@/shared/ui";
 import type { UserCreateDTO } from '@/entities/user/model/';
+import { userRoleOptions } from '@/shared/consts';
 
 const emit = defineEmits<{
     (e: 'submit', data: UserCreateDTO): void
@@ -42,14 +43,9 @@ const handleSubmit = () => {
             <Input v-model="form.password_confirmation" id="password_confirmation" type="password" required />
         </FormField>
 
-        <label>
-            Роль:
-            <select v-model="form.role" required>
-                <option value="">Выберите роль</option>
-                <option value="admin">Админ</option>
-                <option value="user">Пользователь</option>
-            </select>
-        </label>
+        <FormField>
+            <Select v-model="form.role" :options="userRoleOptions" label="Роль:" required />
+        </FormField>
 
         <Button type="submit">Создать</Button>
     </Form>

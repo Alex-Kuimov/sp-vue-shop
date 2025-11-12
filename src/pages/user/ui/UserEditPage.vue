@@ -9,45 +9,28 @@ const route = useRoute()
 const userStore = useUserStore()
 
 const user = ref<UserUpdateDTO | null>(null)
-const loading = ref(true)
-const error = ref<string | null>(null)
 
-// Обновление пользователя
 const handleEdit = async (data: UserUpdateDTO) => {
-    try {
-        const id = Number(route.params.id);
-        await userStore.updateItem(id, data);
-
-    } catch (err) {
-        error.value = 'Ошибка при обновлении пользователя'
-    }
+    const id = Number(route.params.id);
+    await userStore.updateItem(id, data);
 }
 
-// Получаем данные пользователя
 onMounted(async () => {
-    try {
-        const id = Number(route.params.id);
-        const item = await userStore.getItem(id);
+    const id = Number(route.params.id);
+    const item = await userStore.getItem(id);
 
-        user.value = {
-            name: item.name,
-            email: item.email
-        }
-    } catch (err) {
-        error.value = 'Ошибка при загрузке пользователя'
-    } finally {
-        loading.value = false
+    user.value = {
+        name: item.name,
+        email: item.email
     }
 })
 </script>
 
 <template>
-    <section>
-        <p>Редактировать пользователя</p>
+    <p>Редактировать пользователя</p>
+    <UserUpdateForm :user="user" @submit="handleEdit" />
 
-        <p v-if="loading">Загрузка...</p>
-        <p v-else-if="error">{{ error }}</p>
+    <p v-if="userStore.loading">Загрузка...</p>
+    <p v-if="userStore.error">{{ userStore.error }}</p>
 
-        <UserUpdateForm v-else :user="user" @submit="handleEdit" />
-    </section>
 </template>

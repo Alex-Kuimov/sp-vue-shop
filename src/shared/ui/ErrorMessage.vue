@@ -3,31 +3,39 @@ import { computed } from 'vue';
 import type { ApiError } from '@/shared/api/';
 
 const props = defineProps<{
-    error?: ApiError | null;
+    error?: ApiError | string[] | null;
 }>();
 
-const message = computed(() =>
-    typeof props.error === 'string'
-        ? props.error
-        : props.error?.message || 'Неизвестная ошибка'
-);
+const message = computed(() => {
+    // Handle string array case
+    if (Array.isArray(props.error)) {
+        return props.error[0] || 'Неизвестная ошибка';
+    }
+
+    // Handle string case
+    if (typeof props.error === 'string') {
+        return props.error;
+    }
+
+    // Handle ApiError case
+    if (props.error?.message) {
+        return props.error?.message;
+    }
+
+    return 'Неизвестная ошибка';
+});
 </script>
 
 <template>
     <div v-if="error" class="error-message">
-        <span>Ошибка:</span>
+
         <span>{{ message }}</span>
     </div>
 </template>
 
 <style scoped>
 .error-message {
-    background-color: #ffe5e5;
-    border: 1px solid #ffcccc;
     color: #cc0000;
-    padding: 10px 12px;
-    border-radius: 6px;
-    margin: 8px 0;
     font-size: 14px;
 }
 </style>

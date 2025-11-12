@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { UserUpdateForm } from '@/entities/user/ui';
 import { useUserStore } from '@/entities/user/model';
-import { Loader, ErrorMessage } from '@/shared/ui';
+import { Loader } from '@/shared/ui';
 import type { UserUpdateDTO } from '@/entities/user/model';
 
 const route = useRoute()
@@ -29,9 +29,7 @@ onMounted(async () => {
 
 <template>
     <p>Редактировать пользователя</p>
-    <UserUpdateForm :user="user" @submit="handleEdit" />
+    <UserUpdateForm :user="user" :errors="userStore.errors" @submit="handleEdit" />
 
     <Loader v-if="userStore.loading" />
-    <ErrorMessage v-if="userStore.error" :error="userStore.error" />
-
 </template>

@@ -24,12 +24,20 @@ http.interceptors.response.use(
     response => response,
     error => {
         if (error.response) {
-            // Сервер ответил с ошибкой
-            throw new ApiError(
-                error.response.data?.message || 'Ошибка запроса',
-                error.response.status,
-                error.response.data
+            const { data, status } = error.response;
+
+            // Laravel validation errors
+            const apiError = new ApiError(
+                data?.message || 'Ошибка запроса',
+                status,
+                data
             );
+
+            if (status === 422 && data?.errors) {
+                apiError.errors = data.errors;
+            }
+
+            throw apiError;
         } else if (error.request) {
             // Нет ответа от сервера
             throw new ApiError('Сервер не отвечает');

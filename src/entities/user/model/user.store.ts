@@ -8,6 +8,7 @@ export const useUserStore = defineStore('user', () => {
     const items = ref<User[] | null>(null);
     const loading = ref(false);
     const error = ref<ApiError | null>(null);
+    const errors = ref<Record<string, string[]> | null>(null);
 
     const getItem = async (id: number) => {
         try {
@@ -57,12 +58,19 @@ export const useUserStore = defineStore('user', () => {
             const res = await updateUser(id, data);
             return res.data;
         } catch (err) {
-            error.value = err as ApiError;
+            const apiError = err as ApiError;
+
+            error.value = apiError;
+
+            if (apiError.errors) {
+                errors.value = apiError.errors;
+            }
+
             throw err;
         } finally {
             loading.value = false;
         }
     };
 
-    return { items, error, loading, getItem, getItems, createItem, updateItem };
+    return { items, error, errors, loading, getItem, getItems, createItem, updateItem };
 });

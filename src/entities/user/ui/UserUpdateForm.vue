@@ -1,60 +1,47 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import type { UserUpdateDTO } from '@/entities/user/model'
+import { ref, watch } from 'vue';
+import { Input, Button, Label, Form, FormField } from "@/shared/ui";
+import type { UserUpdateDTO } from '@/entities/user/model';
 
-// Пропсы: частично заполненные данные пользователя
 const props = defineProps<{
-    user?: Partial<UserUpdateDTO>
-}>()
+    user: Partial<UserUpdateDTO> | null
+}>();
 
 const emit = defineEmits<{
     (e: 'submit', data: UserUpdateDTO): void
-}>()
+}>();
 
-// Локальное состояние формы
 const form = ref<UserUpdateDTO>({
     name: '',
     email: ''
-})
+});
 
-// Следим за изменением initialData
-watch(
-    () => props.user,
-    (data) => {
-        if (data) {
-            form.value.name = data.name ?? ''
-            form.value.email = data.email ?? ''
-        }
-    },
-    { immediate: true }
-)
+watch(() => props.user, (data) => {
+    if (data) {
+        form.value.name = data.name ?? ''
+        form.value.email = data.email ?? ''
+    }
+}, { immediate: true })
 
 const handleSubmit = () => {
-    emit('submit', form.value)
+    emit('submit', form.value);
 }
 </script>
 
 <template>
-    <form @submit.prevent="handleSubmit" class="user-form">
-        <label>
-            Имя:
-            <input v-model="form.name" type="text" required />
-        </label>
+    <Form @submit.prevent="handleSubmit">
+        <FormField>
+            <Label for="name">Имя:</Label>
+            <Input v-model="form.name" id="name" type="text" required />
+        </FormField>
 
-        <label>
-            Email:
-            <input v-model="form.email" type="email" required />
-        </label>
+        <FormField>
+            <Label for="email">Email:</Label>
+            <Input v-model="form.email" id="email" type="email" required />
+        </FormField>
 
-        <button type="submit">Сохранить</button>
-    </form>
+        <Button type="submit">Сохранить</Button>
+    </Form>
 </template>
 
-<style scoped>
-.user-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
-}
-</style>
+<style scoped></style>

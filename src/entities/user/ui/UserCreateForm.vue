@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Input, Button, Label, Form, FormField } from "@/shared/ui";
 import type { UserCreateDTO } from '@/entities/user/model/';
 
 const emit = defineEmits<{
@@ -20,26 +21,26 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <form @submit.prevent="handleSubmit" class="user-form">
-        <label>
-            Имя:
-            <input v-model="form.name" type="text" required />
-        </label>
+    <Form @submit.prevent="handleSubmit">
+        <FormField>
+            <Label for="name">Имя:</Label>
+            <Input v-model="form.name" id="name" type="text" required />
+        </FormField>
 
-        <label>
-            Email:
-            <input v-model="form.email" type="email" required />
-        </label>
+        <FormField>
+            <Label for="email">Email:</Label>
+            <Input v-model="form.email" id="email" type="email" required />
+        </FormField>
 
-        <label>
-            Пароль:
-            <input v-model="form.password" type="password" required />
-        </label>
+        <FormField>
+            <Label for="password">Пароль:</Label>
+            <Input v-model="form.password" id="password" type="password" required />
+        </FormField>
 
-        <label>
-            Подтверждение пароля:
-            <input v-model="form.password_confirmation" type="password" required />
-        </label>
+        <FormField>
+            <Label for="password_confirmation">Подтверждение пароля:</Label>
+            <Input v-model="form.password_confirmation" id="password_confirmation" type="password" required />
+        </FormField>
 
         <label>
             Роль:
@@ -50,8 +51,8 @@ const handleSubmit = () => {
             </select>
         </label>
 
-        <button type="submit">Создать</button>
-    </form>
+        <Button type="submit">Создать</Button>
+    </Form>
 </template>
 
 <style scoped>

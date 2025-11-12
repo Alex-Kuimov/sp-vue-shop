@@ -8,7 +8,7 @@ import type { UserUpdateDTO } from '@/entities/user/model'
 const route = useRoute()
 const userStore = useUserStore()
 
-const user = ref<Partial<UserUpdateDTO> | undefined>(undefined)
+const user = ref<UserUpdateDTO | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
@@ -43,7 +43,7 @@ onMounted(async () => {
 
 <template>
     <section>
-        <h1>Редактировать пользователя</h1>
+        <p>Редактировать пользователя</p>
 
         <p v-if="loading">Загрузка...</p>
         <p v-else-if="error">{{ error }}</p>

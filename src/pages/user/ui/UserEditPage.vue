@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import { UserUpdateForm } from '@/entities/user/ui'
-import { useUserStore } from '@/entities/user/model'
-import type { UserUpdateDTO } from '@/entities/user/model'
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { UserUpdateForm } from '@/entities/user/ui';
+import { useUserStore } from '@/entities/user/model';
+import { Loader, ErrorMessage } from '@/shared/ui';
+import type { UserUpdateDTO } from '@/entities/user/model';
 
 const route = useRoute()
 const userStore = useUserStore()
@@ -30,7 +31,7 @@ onMounted(async () => {
     <p>Редактировать пользователя</p>
     <UserUpdateForm :user="user" @submit="handleEdit" />
 
-    <p v-if="userStore.loading">Загрузка...</p>
-    <p v-if="userStore.error">{{ userStore.error }}</p>
+    <Loader v-if="userStore.loading" />
+    <ErrorMessage v-if="userStore.error" :error="userStore.error" />
 
 </template>

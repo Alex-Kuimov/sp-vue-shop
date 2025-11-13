@@ -6,10 +6,11 @@ interface ApiErrorResponse {
 
 export const extractApiError = (error: unknown): ApiErrorResponse => {
     if (axios.isAxiosError<ApiErrorResponse>(error)) {
+        const data: Partial<ApiErrorResponse> = error.response?.data ?? {};
         return {
-            message: error.response?.data?.message ?? 'Network error',
-            errors: error.response?.data?.errors,
-        }
+            message: data.message || 'Ошибка сети',
+            errors: data.errors || {},
+        };
     }
-    return { message: 'Unexpected error', errors: undefined }
-}
+    return { message: 'Неизвестная ошибка', errors: {} };
+};

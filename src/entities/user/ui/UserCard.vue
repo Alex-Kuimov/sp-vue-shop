@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { UserEditBtn } from '@/features/user/';
+
 interface Props {
     id: number
     name: string
@@ -6,7 +8,7 @@ interface Props {
     role: string
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
@@ -15,6 +17,7 @@ defineProps<Props>()
         <span>{{ name }}</span>
         <span>{{ email }}</span>
         <span>{{ role }}</span>
+        <UserEditBtn :id="id" />
     </div>
 </template>
 

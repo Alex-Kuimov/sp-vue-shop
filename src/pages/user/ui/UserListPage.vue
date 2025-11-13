@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { UserCreateBtn } from '@/features/user/';
 import { UserListWidget } from '@/widgets/user/';
 import { useUserStore } from '@/entities/user/model';
 
@@ -12,6 +13,7 @@ onMounted(async () => {
 
 <template>
     <p>Список пользователей</p>
+    <UserCreateBtn />
     <UserListWidget :users="userStore.items" />
 </template>
 

@@ -2,11 +2,12 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import type { LoginRequest } from './auth.interface';
 import { loginApi, logoutApi } from '../api/auth.request';
+import { extractApiError } from '@/shared/api';
 
 export const useAuthStore = defineStore('auth', () => {
     const loading = ref<boolean>(false);
-    const error = ref<string | null>(null);
     const token = ref<string | null>(null);
+    const error = ref<string | null>(null);
 
     const isAuth = computed(() => {
         if (token.value) {
@@ -40,9 +41,10 @@ export const useAuthStore = defineStore('auth', () => {
             const token = await loginApi(userData);
             setToken(token);
             return true;
-        } catch (err) {
-            console.error('Login error:', err);
-            error.value = 'Login Error';
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            throw err;
         } finally {
             loading.value = false;
         }
@@ -56,9 +58,10 @@ export const useAuthStore = defineStore('auth', () => {
             await logoutApi();
             clearToken();
             return true;
-        } catch (err) {
-            console.error('Logout error:', err);
-            error.value = 'Logout Error';
+        } catch (err: unknown) {
+            const apiError = extractApiError(err);
+            error.value = apiError.message;
+            throw err;
         } finally {
             loading.value = false;
         }

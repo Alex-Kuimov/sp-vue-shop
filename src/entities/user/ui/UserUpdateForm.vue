@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
-import { Input, Button, Label, Form, FormField, ErrorMessage } from "@/shared/ui";
+import { Label, Form, FormField, ErrorMessage } from "@/shared/ui";
 import type { UserUpdateDTO } from '@/entities/user/model';
 
 const props = defineProps<{
@@ -47,24 +47,24 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <Form @submit.prevent="handleSubmit">
+    <Form>
         <FormField>
             <Label for="name">Имя:</Label>
-            <Input v-model="form.name" id="name" type="text" :class="{ err: errors.name }" :disabled="props.loading"
-                required />
+            <n-input v-model:value="form.name" id="name" type="text" :class="{ err: errors.name }"
+                :disabled="props.loading" :loading="props.loading" required />
             <ErrorMessage :error="errors.name" />
         </FormField>
 
         <FormField>
             <Label for="email">Email:</Label>
-            <Input v-model="form.email" id="email" type="email" :class="{ err: errors.email }" :disabled="props.loading"
-                required />
+            <n-input v-model:value="form.email" id="email" type="email" :class="{ err: errors.email }"
+                :disabled="props.loading" :loading="props.loading" required />
             <ErrorMessage :error="errors.email" />
         </FormField>
 
-        <Button type="submit" :disabled="props.loading">
+        <n-button type="primary" :disabled="props.loading" @click="handleSubmit">
             {{ loadData ? 'Сохранение...' : 'Сохранить' }}
-        </Button>
+        </n-button>
     </Form>
 </template>
 

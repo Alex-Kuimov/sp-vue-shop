@@ -12,21 +12,15 @@ defineProps<Props>();
 </script>
 
 <template>
-    <div class="user-card">
-        <span>{{ id }}</span>
-        <span>{{ name }}</span>
-        <span>{{ email }}</span>
-        <span>{{ role }}</span>
-        <UserEditBtn :id="id" />
-    </div>
+    <tr>
+        <td>{{ id }}</td>
+        <td>{{ name }}</td>
+        <td>{{ email }}</td>
+        <td>{{ role }}</td>
+        <td>
+            <UserEditBtn :id="id" />
+        </td>
+    </tr>
 </template>
 
-<style scoped>
-.user-card {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-</style>
+<style scoped></style>

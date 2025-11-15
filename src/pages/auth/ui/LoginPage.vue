@@ -3,8 +3,18 @@ import { LoginForm } from '@/features/auth';
 </script>
 
 <template>
-  <h2>Вход в систему</h2>
-  <LoginForm />
+  <div class="auth-page">
+    <n-h1>Вход в систему</n-h1>
+    <LoginForm />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>

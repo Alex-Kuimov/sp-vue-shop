@@ -81,13 +81,13 @@ export const useUserStore = defineStore('user', () => {
             loading.value = true;
             error.value = null;
             const res = await deleteUser(id);
+            items.value = items.value ? items.value.filter(item => item.id !== id) : null;
             return res.data;
         } catch (err: unknown) {
             const apiError = extractApiError(err);
             error.value = apiError.message;
             throw err;
         } finally {
-            items.value = items.value ? items.value.filter(item => item.id !== id) : null;
             loading.value = false;
         }
     };

@@ -6,22 +6,10 @@ import { extractApiError } from '@/shared/api';
 
 export const useAuthStore = defineStore('auth', () => {
     const loading = ref<boolean>(false);
-    const token = ref<string | null>(null);
+    const token = ref<string | null>(localStorage.getItem('authToken'));
     const error = ref<string | null>(null);
 
-    const isAuth = computed(() => {
-        if (token.value) {
-            return true;
-        }
-
-        token.value = localStorage.getItem('authToken');
-
-        if (token.value) {
-            return true;
-        }
-
-        return false;
-    });
+    const isAuth = computed(() => !!token.value);
 
     const setToken = (value: string) => {
         localStorage.setItem('authToken', value);

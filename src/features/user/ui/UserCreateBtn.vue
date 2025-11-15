@@ -16,3 +16,9 @@ const onClick = () => {
         Создать нового пользователя
     </n-button>
 </template>
+
+<style scoped>
+.n-button {
+    margin-bottom: 30px;
+}
+</style>

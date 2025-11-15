@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <p>Список пользователей</p>
+    <n-h1>Список пользователей</n-h1>
     <UserCreateBtn />
     <UserListWidget :users="userStore.items" />
 </template>

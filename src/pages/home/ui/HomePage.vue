@@ -2,7 +2,7 @@
 import { UserCreateBtn } from '@/features/user/';
 </script>
 <template>
-    <p>Home page</p>
+    <n-h1>Главная</n-h1>
     <UserCreateBtn />
 </template>
 <style scoped></style>

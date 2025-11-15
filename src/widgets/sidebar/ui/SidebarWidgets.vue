@@ -4,16 +4,22 @@ import { ROUTES } from '@/shared/routes';
 </script>
 <template>
     <aside class="sidebar">
-        <nav>
-            <ul>
-                <li>
-                    <RouterLink :to="ROUTES.HOME.PATH">Главная</RouterLink>
-                </li>
-                <li>
-                    <RouterLink :to="ROUTES.USERS.PATH">Пользователи</RouterLink>
-                </li>
-            </ul>
-        </nav>
+        <n-ul>
+            <n-li>
+                <RouterLink :to="ROUTES.HOME.PATH" #="{ navigate, href }" custom>
+                    <n-a :href="href" @click="navigate">
+                        Главная
+                    </n-a>
+                </RouterLink>
+            </n-li>
+            <n-li>
+                <RouterLink :to="ROUTES.USERS.PATH" #="{ navigate, href }" custom>
+                    <n-a :href="href" @click="navigate">
+                        Пользователи
+                    </n-a>
+                </RouterLink>
+            </n-li>
+        </n-ul>
     </aside>
 </template>
 
@@ -21,15 +27,19 @@ import { ROUTES } from '@/shared/routes';
 .sidebar {
     width: 200px;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #fafafc;
+    padding: 10px;
 }
+
 .sidebar nav {
     padding: 1rem;
 }
+
 .sidebar ul {
     list-style: none;
     padding: 0;
 }
+
 .sidebar li {
     margin-bottom: 1rem;
 }

@@ -16,6 +16,8 @@ import { LogoutBtn } from '@/features/auth';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid #efeff5;
 }
 
 .header-left {

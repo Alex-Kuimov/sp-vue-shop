@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UserEditBtn } from '@/features/user/';
+import { UserEditBtn, UserDeleteBtn } from '@/features/user/';
 
 interface Props {
     id: number
@@ -19,6 +19,7 @@ defineProps<Props>();
         <td>{{ role }}</td>
         <td>
             <UserEditBtn :id="id" />
+            <UserDeleteBtn :id="id" />
         </td>
     </tr>
 </template>

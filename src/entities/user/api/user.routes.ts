@@ -3,4 +3,5 @@ export const USER_API = {
     list: () => `/api/users`,
     create: () => `/api/users`,
     update: (id: number) => `/api/users/${id}`,
+    delete: (id: number) => `/api/users/${id}`,
 } 

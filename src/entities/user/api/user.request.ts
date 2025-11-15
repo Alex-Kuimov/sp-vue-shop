@@ -22,4 +22,9 @@ const updateUser = async (id: number, user: UserUpdateDTO) => {
     return res.data;
 }
 
-export { getUser, getUsers, createUser, updateUser };
+const deleteUser = async (id: number) => {
+    const res = await http.delete<{ data: User }>(USER_API.delete(id));
+    return res.data;
+}
+
+export { getUser, getUsers, createUser, updateUser, deleteUser };

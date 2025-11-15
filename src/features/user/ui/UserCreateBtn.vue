@@ -12,5 +12,7 @@ const onClick = () => {
 </script>
 
 <template>
-    <button @click="onClick">Создать нового пользователя</button>
+    <n-button @click="onClick">
+        Создать нового пользователя
+    </n-button>
 </template>

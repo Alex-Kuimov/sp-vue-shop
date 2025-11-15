@@ -14,5 +14,7 @@ const onClick = () => {
 </script>
 
 <template>
-    <button @click="onClick">Редактировать</button>
+    <n-button @click="onClick">
+        Редактировать
+    </n-button>
 </template>

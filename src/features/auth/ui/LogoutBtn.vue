@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Button } from "@/shared/ui";
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../model/auth.store';
 import { ROUTES } from '@/shared/routes';
@@ -16,9 +15,9 @@ const handleClick = async () => {
 </script>
 
 <template>
-    <Button type="button" @click="handleClick">
+    <n-button @click="handleClick">
         <slot></slot>
-    </Button>
+    </n-button>
 </template>
 
 <style scoped></style>

@@ -19,7 +19,7 @@ const handleCreate = async (formData: UserCreateDTO) => {
 </script>
 
 <template>
-    <p>Новый пользователь</p>
+    <n-h1>Новый пользователь</n-h1>
     <UserCreateForm mode="create" @submit="handleCreate" />
 </template>
 

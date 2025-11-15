@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
-import { Label, Form, FormField, ErrorMessage } from "@/shared/ui";
+import { ErrorMessage } from "@/shared/ui";
 import type { UserUpdateDTO } from '@/entities/user/model';
 
 const props = defineProps<{
@@ -47,25 +47,23 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <Form>
-        <FormField>
-            <Label for="name">Имя:</Label>
+    <n-form class="form">
+        <n-form-item label="Имя:" path="name">
             <n-input v-model:value="form.name" id="name" type="text" :class="{ err: errors.name }"
-                :disabled="props.loading" :loading="props.loading" required />
+                :disabled="props.loading" :loading="props.loading" placeholder="" required />
             <ErrorMessage :error="errors.name" />
-        </FormField>
+        </n-form-item>
 
-        <FormField>
-            <Label for="email">Email:</Label>
+        <n-form-item label="E-mail:" path="email">
             <n-input v-model:value="form.email" id="email" type="email" :class="{ err: errors.email }"
-                :disabled="props.loading" :loading="props.loading" required />
+                :disabled="props.loading" :loading="props.loading" placeholder="" required />
             <ErrorMessage :error="errors.email" />
-        </FormField>
+        </n-form-item>
 
         <n-button type="primary" :disabled="props.loading" @click="handleSubmit">
             {{ loadData ? 'Сохранение...' : 'Сохранить' }}
         </n-button>
-    </Form>
+    </n-form>
 </template>
 
 <style scoped>

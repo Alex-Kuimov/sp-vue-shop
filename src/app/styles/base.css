@@ -5,3 +5,8 @@
 .n-form-item-feedback--error {
     text-align: right;
 }
+
+.n-form-item .n-form-item-blank {
+    flex-direction: column;
+    align-items: end;
+}

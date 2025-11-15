@@ -26,6 +26,7 @@ const handleEdit = async (data: UserUpdateDTO) => {
 onMounted(async () => {
     const id = Number(route.params.id);
     try {
+        userStore.errors = {};
         const item = await userStore.getItem(id);
         user.value = { name: item.name, email: item.email };
     } catch (err) {
@@ -36,7 +37,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <p>Редактировать пользователя</p>
+    <n-h1>Редактировать пользователя</n-h1>
+
     <UserUpdateForm :user="user" :errors="userStore.errors" :loading="userStore.loading" @submit="handleEdit" />
 
     <Loader v-if="userStore.loading" />

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Input, Button, Label, Form, FormField, Select } from "@/shared/ui";
 import type { UserCreateDTO } from '@/entities/user/model/';
 import { userRoleOptions } from '@/shared/consts';
 
@@ -22,40 +21,33 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <Form @submit.prevent="handleSubmit">
-        <FormField>
-            <Label for="name">Имя:</Label>
-            <Input v-model="form.name" id="name" type="text" required />
-        </FormField>
+    <n-form class="form">
+        <n-form-item label="Имя:" path="name">
+            <n-input v-model:value="form.name" id="name" type="text" placeholder="" required />
+        </n-form-item>
 
-        <FormField>
-            <Label for="email">Email:</Label>
-            <Input v-model="form.email" id="email" type="email" required />
-        </FormField>
+        <n-form-item label="Email:" path="email">
+            <n-input v-model:value="form.email" id="email" type="email" placeholder="" required />
+        </n-form-item>
 
-        <FormField>
-            <Label for="password">Пароль:</Label>
-            <Input v-model="form.password" id="password" type="password" required />
-        </FormField>
+        <n-form-item label="Пароль:" path="email">
+            <n-input v-model:value="form.password" id="password" type="password" placeholder="" required />
+        </n-form-item>
 
-        <FormField>
-            <Label for="password_confirmation">Подтверждение пароля:</Label>
-            <Input v-model="form.password_confirmation" id="password_confirmation" type="password" required />
-        </FormField>
+        <n-form-item label="Подтверждение пароля:" path="email">
+            <n-input v-model:value="form.password_confirmation" id="password_confirmation" type="password"
+                placeholder="" required />
+        </n-form-item>
 
-        <FormField>
-            <Select v-model="form.role" :options="userRoleOptions" label="Роль:" required />
-        </FormField>
+        <n-form-item label="Роль:" path="role">
+            <n-select v-model:value="form.role" :options="userRoleOptions" />
+        </n-form-item>
 
-        <Button type="submit">Создать</Button>
-    </Form>
+        <n-button type="primary" @click="handleSubmit">
+            Создать
+        </n-button>
+    </n-form>
 </template>
 
 <style scoped>
-.user-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
-}
 </style>

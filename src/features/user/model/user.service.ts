@@ -6,15 +6,15 @@ import { extractApiError } from '@/shared/api';
 async function withStore<T>(fn: (store: ReturnType<typeof useUserStore>) => Promise<T>) {
     const store = useUserStore();
     store.loading = true;
-    store.error = null;
-    store.errors = null;
+    store.errorMessage = null;
+    store.validationErrors = null;
 
     try {
         return await fn(store);
     } catch (err) {
         const apiError = extractApiError(err);
-        store.error = apiError.message;
-        store.errors = apiError.errors ?? null;
+        store.errorMessage = apiError.message;
+        store.validationErrors = apiError.errors ?? null;
         throw err;
     } finally {
         store.loading = false;
@@ -47,9 +47,8 @@ export const userService = {
     },
 
     updateItem(id: number, data: UserUpdateDTO) {
-        return withStore(async (store) => {
+        return withStore(async () => {
             const res = await updateUser(id, data);
-            store.items = store.items.map(i => i.id === id ? res.data : i);
             return res.data;
         });
     },

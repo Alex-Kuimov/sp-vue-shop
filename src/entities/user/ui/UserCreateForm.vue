@@ -5,7 +5,7 @@ import { ErrorMessage } from "@/shared/ui";
 import { userRoleOptions } from '@/shared/consts';
 
 const props = defineProps<{
-    errors: Record<string, string[]> | null,
+    validationErrors: Record<string, string[]> | null,
     loading?: boolean,
 }>();
 
@@ -22,11 +22,11 @@ const form = ref<UserCreateDTO>({
 });
 
 const errors = computed(() => ({
-    name: props.errors?.name?.[0] ?? null,
-    email: props.errors?.email?.[0] ?? null,
-    password: props.errors?.password?.[0] ?? null,
-    password_confirmation: props.errors?.password_confirmation?.[0] ?? null,
-    role: props.errors?.role?.[0] ?? null,
+    name: props.validationErrors?.name?.[0] ?? null,
+    email: props.validationErrors?.email?.[0] ?? null,
+    password: props.validationErrors?.password?.[0] ?? null,
+    password_confirmation: props.validationErrors?.password_confirmation?.[0] ?? null,
+    role: props.validationErrors?.role?.[0] ?? null,
 }));
 
 const handleSubmit = () => {
@@ -69,7 +69,6 @@ const handleSubmit = () => {
         <n-button type="primary" :disabled="props.loading" @click="handleSubmit">
             {{ props.loading ? 'Создаю...' : 'Создать' }}
         </n-button>
-
     </n-form>
 </template>
 

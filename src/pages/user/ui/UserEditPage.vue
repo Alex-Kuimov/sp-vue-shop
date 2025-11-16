@@ -38,8 +38,6 @@ onMounted(async () => {
 
 <template>
     <n-h1>Редактировать пользователя</n-h1>
-
-    <UserUpdateForm :user="user" :errors="userStore.errors" :loading="userStore.loading" @submit="handleEdit" />
-
+    <UserUpdateForm :user="user" :validationErrors="userStore.validationErrors" :loading="userStore.loading" @submit="handleEdit" />
     <Loader v-if="userStore.loading" />
 </template>

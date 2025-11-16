@@ -21,7 +21,8 @@ const handleCreate = async (formData: UserCreateDTO) => {
 
 <template>
     <n-h1>Новый пользователь</n-h1>
-    <UserCreateForm :errors="userStore.errors" :loading="userStore.loading" @submit="handleCreate" />
+    <UserCreateForm :validationErrors="userStore.validationErrors" :loading="userStore.loading"
+        @submit="handleCreate" />
 </template>
 
 <style scoped></style>

@@ -5,7 +5,7 @@ import type { UserUpdateDTO } from '@/entities/user/model';
 
 const props = defineProps<{
     user: Partial<UserUpdateDTO> | null,
-    errors: Record<string, string[]> | null,
+    validationErrors: Record<string, string[]> | null,
     loading?: boolean,
 }>();
 
@@ -21,8 +21,8 @@ const form = ref<UserUpdateDTO>({
 const loadData = ref<boolean>(false);
 
 const errors = computed(() => ({
-    name: props.errors?.name?.[0] ?? null,
-    email: props.errors?.email?.[0] ?? null
+    name: props.validationErrors?.name?.[0] ?? null,
+    email: props.validationErrors?.email?.[0] ?? null
 }));
 
 watch(() => props.user, (data) => {

@@ -7,32 +7,28 @@ import { UserCreateBtn, UserPagination, UserSearch } from '@/features/user';
 import { UserListWidget } from '@/widgets/user';
 import { ROUTES } from '@/shared/routes';
 
-// Props из маршрута
-const props = defineProps<{ page: number }>();
-
 const router = useRouter();
 const userStore = useUserStore();
 
-// Инициализируем currentPage из props
-userStore.currentPage = props.page;
+// Получаем текущую страницу из URL
+const { page } = defineProps<{ page: number }>();
 
-// Первая загрузка пользователей
-onMounted(() => {
-    userService.getItems(userStore.currentPage);
-});
+userStore.currentPage = page;
 
-// Обработчик смены страницы
 const handlePageChange = (page: number) => {
     userStore.currentPage = page;
 };
 
-// Следим за currentPage, обновляем данные и URL
 watch(() => userStore.currentPage, (page) => {
     userService.getItems(page);
     router.replace({
         name: ROUTES.USERS.NAME,
         params: { page },
     });
+});
+
+onMounted(() => {
+    userService.getItems(userStore.currentPage);
 });
 </script>
 

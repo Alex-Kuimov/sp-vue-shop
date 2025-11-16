@@ -2,13 +2,13 @@
 import { useRouter } from 'vue-router';
 import { ROUTES } from '@/shared/routes/routes';
 
-const props = defineProps<{ id: number }>();
+const { id } = defineProps<{ id: number }>();
 const router = useRouter();
 
 const onClick = () => {
     router.push({
         name: ROUTES.USER_EDIT.NAME,
-        params: { id: props.id },
+        params: { id },
     });
 }
 </script>

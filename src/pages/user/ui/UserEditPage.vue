@@ -2,7 +2,8 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { UserUpdateForm } from '@/entities/user/ui';
-import { useUserStore, userService } from '@/entities/user/model';
+import { useUserStore } from '@/entities/user/model';
+import { userService } from '@/features/user/model';
 import { Loader } from '@/shared/ui';
 import { notification } from '@/shared/lib';
 import type { UserUpdateDTO } from '@/entities/user/model';

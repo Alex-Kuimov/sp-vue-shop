@@ -1,6 +1,6 @@
-import type { UserCreateDTO, UserUpdateDTO } from './user.interface';
-import { useUserStore } from './user.store';
-import { getUser, getUsers, createUser, updateUser, deleteUser } from '../api/user.request';
+import type { UserCreateDTO, UserUpdateDTO } from '@/entities/user/model';
+import { useUserStore } from '@/entities/user/model';
+import { getUser, getUsers, createUser, updateUser, deleteUser } from '@/entities/user/api/user.request';
 import { extractApiError } from '@/shared/api';
 
 async function withStore<T>(fn: (store: ReturnType<typeof useUserStore>) => Promise<T>) {

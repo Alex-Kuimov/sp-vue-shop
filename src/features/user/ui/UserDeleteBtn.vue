@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { notification } from '@/shared/lib';
-import { userService } from '@/entities/user/model';
+import { userService } from '@/features/user/model';
 
 const props = defineProps<{ id: number }>();
 

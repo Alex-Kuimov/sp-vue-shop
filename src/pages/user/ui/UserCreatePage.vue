@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useUserStore, userService } from '@/entities/user/model';
+import { useUserStore } from '@/entities/user/model';
+import { userService } from '@/features/user/model';
 import { useRouter } from 'vue-router';
 import { UserCreateForm } from '@/entities/user/ui';
 import { ROUTES } from '@/shared/routes';

@@ -47,7 +47,7 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <n-form class="form">
+    <n-form class="form" @submit.prevent="handleSubmit">
         <n-form-item label="Имя:" path="name">
             <n-input v-model:value="form.name" id="name" type="text" :class="{ err: errors.name }"
                 :disabled="props.loading" :loading="props.loading" placeholder="" required />
@@ -60,7 +60,7 @@ const handleSubmit = () => {
             <ErrorMessage :error="errors.email" />
         </n-form-item>
 
-        <n-button type="primary" :disabled="props.loading" @click="handleSubmit">
+        <n-button attr-type="submit" type="primary" :disabled="props.loading">
             {{ loadData ? 'Сохранение...' : 'Сохранить' }}
         </n-button>
     </n-form>

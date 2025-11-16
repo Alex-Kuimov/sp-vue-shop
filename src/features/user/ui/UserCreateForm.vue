@@ -35,7 +35,7 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <n-form class="form">
+    <n-form class="form" @submit.prevent="handleSubmit">
         <n-form-item label="Имя:" path="name">
             <n-input v-model:value="form.name" id="name" type="text" :class="{ err: errors.name }"
                 :disabled="props.loading" placeholder="" required />
@@ -48,13 +48,13 @@ const handleSubmit = () => {
             <ErrorMessage :error="errors.email" />
         </n-form-item>
 
-        <n-form-item label="Пароль:" path="email">
+        <n-form-item label="Пароль:" path="password">
             <n-input v-model:value="form.password" id="password" type="password" :class="{ err: errors.password }"
                 :disabled="props.loading" placeholder="" required />
             <ErrorMessage :error="errors.password" />
         </n-form-item>
 
-        <n-form-item label="Подтверждение пароля:" path="email">
+        <n-form-item label="Подтверждение пароля:" path="password_confirmation">
             <n-input v-model:value="form.password_confirmation" id="password_confirmation" type="password"
                 :class="{ err: errors.password_confirmation }" :disabled="props.loading" placeholder="" required />
             <ErrorMessage :error="errors.password_confirmation" />
@@ -66,7 +66,7 @@ const handleSubmit = () => {
             <ErrorMessage :error="errors.role" />
         </n-form-item>
 
-        <n-button type="primary" :disabled="props.loading" @click="handleSubmit">
+        <n-button attr-type="submit" type="primary" :disabled="props.loading">
             {{ props.loading ? 'Создаю...' : 'Создать' }}
         </n-button>
     </n-form>

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { notification } from '@/shared/lib';
-import { useUserStore } from '@/entities/user/model';
+import { userService } from '@/entities/user/model';
 
 const props = defineProps<{ id: number }>();
 
-const userStore = useUserStore();
-
 const onClick = async () => {
-    await userStore.deleteItem(props.id);
+    await userService.deleteItem(props.id);
     notification.success('Пользователь успешно удален');
 }
-
 </script>
 
 <template>

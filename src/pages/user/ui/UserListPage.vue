@@ -2,12 +2,12 @@
 import { onMounted } from 'vue'
 import { UserCreateBtn } from '@/features/user/';
 import { UserListWidget } from '@/widgets/user/';
-import { useUserStore } from '@/entities/user/model';
+import { useUserStore, userService } from '@/entities/user/model';
 
 const userStore = useUserStore();
 
 onMounted(async () => {
-    userStore.getItems();
+    userService.getItems();
 });
 </script>
 

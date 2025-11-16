@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUserStore } from '@/entities/user/model';
+import { useUserStore, userService } from '@/entities/user/model';
 import { useRouter } from 'vue-router';
 import { UserCreateForm } from '@/entities/user/ui';
 import { ROUTES } from '@/shared/routes';
@@ -10,7 +10,7 @@ const router = useRouter();
 
 const handleCreate = async (formData: UserCreateDTO) => {
     try {
-        await userStore.createItem(formData)
+        await userService.createItem(formData)
         router.push(ROUTES.USERS.PATH)
     } catch (e) {
         console.error('Ошибка при создании пользователя', e)

@@ -5,10 +5,10 @@ import { useUserStore } from '@/entities/user/model';
 
 const userStore = useUserStore();
 
-const props = defineProps<{ id: number }>();
+const { id } = defineProps<{ id: number }>();
 
 const onClick = async () => {
-    await userService.deleteItem(props.id);
+    await userService.deleteItem(id);
 
     userStore.currentPage = 1;
     await userService.getItems(userStore.currentPage);

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 
-const props = defineProps<{
+defineProps<{
     page: number
     totalPages: number
 }>();
@@ -16,7 +16,7 @@ const handleInternalPageChange = (page: number) => {
 </script>
 
 <template>
-    <n-pagination :page="props.page" :page-count="props.totalPages" @update:page="handleInternalPageChange" />
+    <n-pagination :page="page" :page-count="totalPages" @update:page="handleInternalPageChange" />
 </template>
 
 <style scoped>

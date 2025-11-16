@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { ErrorMessage } from "@/shared/ui";
 import type { UserUpdateDTO } from '@/entities/user/model';
 
-const props = defineProps<{
+const { user, validationErrors, loading } = defineProps<{
     user: Partial<UserUpdateDTO> | null,
     validationErrors: Record<string, string[]> | null,
     loading?: boolean,
@@ -20,24 +20,27 @@ const form = ref<UserUpdateDTO>({
 
 const loadData = ref<boolean>(false);
 
-watch(() => props.user, (data) => {
+watch(() => user, (data) => {
     if (data) {
         form.value.name = data.name ?? ''
         form.value.email = data.email ?? ''
     }
 }, { immediate: true });
 
-watch(() => props.loading, (newValue) => {
+watch(() => loading, (newValue) => {
     if (!newValue) {
         loadData.value = false;
     }
 });
 
 const handleSubmit = () => {
-    if (!props.loading) {
-        emit('submit', form.value);
-        loadData.value = true;
+    if (loading) {
+        return;
     }
+
+    emit('submit', form.value);
+    loadData.value = true;
+
 }
 </script>
 

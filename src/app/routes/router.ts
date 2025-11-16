@@ -31,8 +31,9 @@ const routes: RouteRecordRaw[] = [
 			},
 			{
 				name: ROUTES.USERS.NAME,
-				path: ROUTES.USERS.PATH,
-				component: () => import('@/pages/user/ui/UserListPage.vue')
+				path: `${ROUTES.USERS.PATH}/page/:page?`,
+				component: () => import('@/pages/user/ui/UserListPage.vue'),
+				props: (route) => ({ page: Number(route.params.page) || 1 })
 			},
 			{
 				name: ROUTES.USER_CREATE.NAME,

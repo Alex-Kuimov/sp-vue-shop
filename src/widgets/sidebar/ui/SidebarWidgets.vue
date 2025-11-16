@@ -13,7 +13,7 @@ import { ROUTES } from '@/shared/routes';
                 </RouterLink>
             </n-li>
             <n-li>
-                <RouterLink :to="ROUTES.USERS.PATH" #="{ navigate, href }" custom>
+                <RouterLink :to="{ name: ROUTES.USERS.NAME, params: { page: 1 } }" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
                         Пользователи
                     </n-a>

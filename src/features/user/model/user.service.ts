@@ -30,18 +30,19 @@ export const userService = {
         });
     },
 
-    getItems() {
+    getItems(page: number = 1) {
         return withStore(async (store) => {
-            const res = await getUsers();
+            const res = await getUsers(page);
             store.items = res.data;
+            store.currentPage = res.current_page;
+            store.totalPages = res.last_page;
             return res.data;
         });
     },
 
     createItem(data: UserCreateDTO) {
-        return withStore(async (store) => {
+        return withStore(async () => {
             const res = await createUser(data);
-            store.items.push(res.data);
             return res.data;
         });
     },
@@ -54,9 +55,8 @@ export const userService = {
     },
 
     deleteItem(id: number) {
-        return withStore(async (store) => {
+        return withStore(async () => {
             await deleteUser(id);
-            store.items = store.items.filter(i => i.id !== id);
         });
     },
 };

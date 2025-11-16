@@ -11,8 +11,12 @@ const router = useRouter();
 
 const handleCreate = async (formData: UserCreateDTO) => {
     try {
-        await userService.createItem(formData)
-        router.push(ROUTES.USERS.PATH)
+        await userService.createItem(formData);
+
+        userStore.currentPage = 1;
+        router.push({ name: ROUTES.USERS.NAME, params: { page: userStore.currentPage } });
+
+        await userService.getItems(userStore.currentPage);
     } catch (e) {
         console.error('Ошибка при создании пользователя', e)
     }

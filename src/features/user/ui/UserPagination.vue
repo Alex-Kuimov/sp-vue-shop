@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
-const page = ref(1);
+const props = defineProps<{
+    page: number
+    totalPages: number
+}>();
+
+const emit = defineEmits<{
+    (e: 'update:page', value: number): void
+}>();
+
+const handleInternalPageChange = (page: number) => {
+    emit('update:page', page);
+};
 </script>
 
 <template>
-    <n-pagination v-model:page="page" :page-count="100" />
+    <n-pagination :page="props.page" :page-count="props.totalPages" @update:page="handleInternalPageChange" />
 </template>
 
 <style scoped>
-    .n-pagination {
-        margin-top: 30px;
-    }
+.n-pagination {
+    margin-top: 30px;
+}
 </style>

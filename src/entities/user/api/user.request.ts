@@ -7,8 +7,10 @@ const getUser = async (id: number) => {
     return data;
 }
 
-const getUsers = async () => {
-    const res = await http.get<{ data: User[] }>(USER_API.list());
+const getUsers = async (page: number = 1) => {
+    const res = await http.get<{ data: User[], current_page: number, last_page: number }>(USER_API.list(), {
+        params: { page }
+    });
     return res.data;
 }
 

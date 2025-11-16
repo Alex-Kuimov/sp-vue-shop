@@ -2,7 +2,7 @@
 import { useUserStore } from '@/entities/user/model';
 import { userService } from '@/features/user/model';
 import { useRouter } from 'vue-router';
-import { UserCreateForm } from '@/entities/user/ui';
+import { UserCreateForm } from '@/features/user';
 import { ROUTES } from '@/shared/routes';
 import type { UserCreateDTO } from '@/entities/user/model'
 

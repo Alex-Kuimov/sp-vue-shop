@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { UserUpdateForm } from '@/entities/user/ui';
+import { UserUpdateForm } from '@/features/user';
 import { useUserStore } from '@/entities/user/model';
 import { userService } from '@/features/user/model';
 import { Loader } from '@/shared/ui';

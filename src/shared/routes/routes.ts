@@ -12,11 +12,11 @@ export const ROUTES = {
         NAME: 'users',
     },
     USER_CREATE: {
-        PATH: '/users/create',
+        PATH: '/user/create',
         NAME: 'user-create',
     },
     USER_EDIT: {
-        PATH: '/users/:id/edit',
+        PATH: '/user/:id/edit',
         NAME: 'user-edit',
     },
 }

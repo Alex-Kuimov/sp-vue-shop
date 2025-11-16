@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { notification } from '@/shared/lib';
 import { userService } from '@/features/user/model';
+import { useUserStore } from '@/entities/user/model';
+
+const userStore = useUserStore();
 
 const props = defineProps<{ id: number }>();
 
 const onClick = async () => {
     await userService.deleteItem(props.id);
+
+    userStore.currentPage = 1;
+    await userService.getItems(userStore.currentPage);
+
     notification.success('Пользователь успешно удален');
 }
 </script>
@@ -17,7 +24,6 @@ const onClick = async () => {
         </template>
         Вы уверены, что хотите удалить пользователя?
     </n-popconfirm>
-
 </template>
 
 <style scoped>

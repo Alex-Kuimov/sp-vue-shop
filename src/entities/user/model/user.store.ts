@@ -10,11 +10,16 @@ export const useUserStore = defineStore('user', () => {
 	const errorMessage = ref<string | null>(null);
 	const validationErrors = ref<Record<string, string[]> | null>(null);
 
+	const currentPage = ref<number>(1);
+	const totalPages = ref<number>(1);
+
 	return {
 		items,
 		item,
 		loading,
 		errorMessage,
 		validationErrors,
+		currentPage,
+		totalPages,
 	};
 });

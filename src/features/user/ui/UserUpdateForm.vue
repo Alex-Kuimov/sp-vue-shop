@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { ErrorMessage } from "@/shared/ui";
 import type { UserUpdateDTO } from '@/entities/user/model';
 
@@ -19,11 +19,6 @@ const form = ref<UserUpdateDTO>({
 });
 
 const loadData = ref<boolean>(false);
-
-const errors = computed(() => ({
-    name: props.validationErrors?.name?.[0] ?? null,
-    email: props.validationErrors?.email?.[0] ?? null
-}));
 
 watch(() => props.user, (data) => {
     if (data) {
@@ -49,18 +44,18 @@ const handleSubmit = () => {
 <template>
     <n-form class="form" @submit.prevent="handleSubmit">
         <n-form-item label="Имя:" path="name">
-            <n-input v-model:value="form.name" id="name" type="text" :class="{ err: errors.name }"
-                :disabled="props.loading" :loading="props.loading" placeholder="" required />
-            <ErrorMessage :error="errors.name" />
+            <n-input v-model:value="form.name" id="name" type="text" :class="{ err: validationErrors?.name }"
+                :disabled="loading" :loading="loading" placeholder="" required />
+            <ErrorMessage :error="validationErrors?.name?.[0] || null" />
         </n-form-item>
 
         <n-form-item label="E-mail:" path="email">
-            <n-input v-model:value="form.email" id="email" type="email" :class="{ err: errors.email }"
-                :disabled="props.loading" :loading="props.loading" placeholder="" required />
-            <ErrorMessage :error="errors.email" />
+            <n-input v-model:value="form.email" id="email" type="email" :class="{ err: validationErrors?.email }"
+                :disabled="loading" :loading="loading" placeholder="" required />
+            <ErrorMessage :error="validationErrors?.email?.[0] || null" />
         </n-form-item>
 
-        <n-button attr-type="submit" type="primary" :disabled="props.loading">
+        <n-button attr-type="submit" type="primary" :disabled="loading">
             {{ loadData ? 'Сохранение...' : 'Сохранить' }}
         </n-button>
     </n-form>

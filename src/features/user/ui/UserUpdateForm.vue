@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { ErrorMessage } from "@/shared/ui";
 import type { UserUpdateDTO } from '@/entities/user/model';
+
+const { t } = useI18n();
 
 const { user, validationErrors, loading } = defineProps<{
     user: Partial<UserUpdateDTO> | null,
@@ -46,20 +49,20 @@ const handleSubmit = () => {
 
 <template>
     <n-form class="form" @submit.prevent="handleSubmit">
-        <n-form-item label="Имя:" path="name">
+        <n-form-item :label="t('user.update.form.name')" path="name">
             <n-input v-model:value="form.name" id="name" type="text" :class="{ err: validationErrors?.name }"
                 :disabled="loading" :loading="loading" placeholder="" required />
             <ErrorMessage :error="validationErrors?.name?.[0] || null" />
         </n-form-item>
 
-        <n-form-item label="E-mail:" path="email">
+        <n-form-item :label="t('user.update.form.email')" path="email">
             <n-input v-model:value="form.email" id="email" type="email" :class="{ err: validationErrors?.email }"
                 :disabled="loading" :loading="loading" placeholder="" required />
             <ErrorMessage :error="validationErrors?.email?.[0] || null" />
         </n-form-item>
 
         <n-button attr-type="submit" type="primary" :disabled="loading">
-            {{ loadData ? 'Сохранение...' : 'Сохранить' }}
+            {{ loadData ? t('user.update.form.loading') : t('buttons.save') }}
         </n-button>
     </n-form>
 </template>

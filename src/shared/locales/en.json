@@ -1,0 +1,51 @@
+{
+    "hello": "Hello",
+    "buttons": {
+        "save": "Save",
+        "create": "Create",
+        "delete": "Delete",
+        "edit": "Edit",
+        "search": "Search"
+    },
+    "user": {
+        "create": {
+            "title": "Create new user",
+            "page_title": "New user",
+            "form": {
+                "name": "Name:",
+                "email": "Email:",
+                "password": "Password:",
+                "password_confirmation": "Password confirmation:",
+                "role": "Role:",
+                "submit": "Create",
+                "loading": "Creating..."
+            }
+        },
+        "update": {
+            "form": {
+                "name": "Name:",
+                "email": "Email:",
+                "submit": "Save",
+                "loading": "Saving..."
+            }
+        },
+        "delete": {
+            "button": "Delete",
+            "confirm": "Are you sure you want to delete the user?",
+            "success": "User deleted successfully"
+        },
+        "edit": {
+            "button": "Edit",
+            "page_title": "Edit user",
+            "success": "User updated successfully",
+            "errors": {
+                "update": "Error updating user",
+                "load": "Error loading user"
+            }
+        },
+        "search": {
+            "placeholder": "Search...",
+            "button": "Search"
+        }
+    }
+}

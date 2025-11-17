@@ -1,0 +1,87 @@
+{
+	"hello": "Привет",
+	"buttons": {
+		"save": "Сохранить",
+		"create": "Создать",
+		"delete": "Удалить",
+		"edit": "Редактировать",
+		"search": "Найти"
+	},
+	"user": {
+		"create": {
+			"title": "Создать нового пользователя",
+			"page_title": "Новый пользователь",
+			"form": {
+				"name": "Имя:",
+				"email": "Email:",
+				"password": "Пароль:",
+				"password_confirmation": "Подтверждение пароля:",
+				"role": "Роль:",
+				"submit": "Создать",
+				"loading": "Создаю..."
+			}
+		},
+		"update": {
+			"form": {
+				"name": "Имя:",
+				"email": "E-mail:",
+				"submit": "Сохранить",
+				"loading": "Сохранение..."
+			}
+		},
+		"delete": {
+			"button": "Удалить",
+			"confirm": "Вы уверены, что хотите удалить пользователя?",
+			"success": "Пользователь успешно удален"
+		},
+		"edit": {
+			"button": "Редактировать",
+			"page_title": "Редактировать пользователя",
+			"success": "Пользователь успешно обновлен",
+			"errors": {
+				"update": "Ошибка обновления пользователя",
+				"load": "Ошибка загрузки пользователя"
+			}
+		},
+		"search": {
+			"placeholder": "Поиск...",
+			"button": "Найти"
+		}
+	},
+	"auth": {
+		"validation": {
+			"email_required": "Введите email",
+			"email_invalid": "Некорректный email",
+			"password_required": "Введите пароль",
+			"password_min_length": "Пароль должен быть от 8 символов"
+		},
+		"login": {
+			"form": {
+				"email_label": "E-mail:",
+				"email_placeholder": "Введите email",
+				"password_label": "Пароль:",
+				"password_placeholder": "Введите пароль",
+				"submit": "Войти",
+				"loading": "Вход..."
+			},
+			"success": "Вход выполнен успешно",
+			"error_prefix": "Ошибка входа: ",
+			"page_title": "Вход в систему"
+		}
+	},
+	"pages": {
+		"home": "Главная",
+		"user": {
+			"list": "Список пользователей"
+		}
+	},
+	"widgets": {
+		"header": {
+			"logout": "Выход"
+		},
+		"sidebar": {
+			"home": "Главная",
+			"users": "Пользователи"
+		}
+	}
+}

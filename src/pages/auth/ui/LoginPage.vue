@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import { LoginForm } from '@/features/auth';
+
+const { t } = useI18n();
 </script>
 
 <template>
   <div class="auth-page">
-    <n-h1>Вход в систему</n-h1>
+    <n-h1>{{ t('auth.login.page_title') }}</n-h1>
     <LoginForm />
   </div>
 </template>

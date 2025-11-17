@@ -1,5 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import { LogoutBtn } from '@/features/auth';
+
+const { t } = useI18n();
 </script>
 <template>
     <header class="header">
@@ -7,7 +10,7 @@ import { LogoutBtn } from '@/features/auth';
             <p>Dashboard</p>
         </div>
         <div class="header-right">
-            <LogoutBtn>Выход</LogoutBtn>
+            <LogoutBtn>{{ t('widgets.header.logout') }}</LogoutBtn>
         </div>
     </header>
 </template>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import { ROUTES } from '@/shared/routes';
+
+const { t } = useI18n();
 </script>
 <template>
     <aside class="sidebar">
@@ -8,14 +11,14 @@ import { ROUTES } from '@/shared/routes';
             <n-li>
                 <RouterLink :to="ROUTES.HOME.PATH" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
-                        Главная
+                        {{ t('widgets.sidebar.home') }}
                     </n-a>
                 </RouterLink>
             </n-li>
             <n-li>
                 <RouterLink :to="{ name: ROUTES.USERS.NAME, params: { page: 1 } }" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
-                        Пользователи
+                        {{ t('widgets.sidebar.users') }}
                     </n-a>
                 </RouterLink>
             </n-li>

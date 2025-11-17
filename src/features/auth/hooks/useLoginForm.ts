@@ -1,14 +1,16 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '../model/auth.store';
 import { authService } from '../model/auth.service';
 import { ROUTES } from '@/shared/routes';
 import { notification } from '@/shared/lib';
-import { emailRule, passwordRule } from '../lib/validation';
+import { getEmailRule, getPasswordRule } from '../lib/validation';
 import type { LoginForm } from '../model/auth.interface';
 import type { FormInst } from 'naive-ui';
 
 export function useLoginForm() {
+    const { t } = useI18n();
     const authStore = useAuthStore();
     const router = useRouter();
 
@@ -20,8 +22,8 @@ export function useLoginForm() {
     });
 
     const rules = {
-        email: emailRule,
-        password: passwordRule,
+        email: getEmailRule(t),
+        password: getPasswordRule(t),
     };
 
     const authenticate = async () => {
@@ -29,11 +31,11 @@ export function useLoginForm() {
             const success = await authService.login(form.value);
 
             if (success) {
-                notification.success('Вход выполнен успешно');
+                notification.success(t('auth.login.success'));
                 router.push(ROUTES.HOME.PATH);
             }
         } catch {
-            notification.error(`Ошибка входа: ${authStore.errorMessage}`);
+            notification.error(`${t('auth.login.error_prefix')}${authStore.errorMessage}`);
         }
     };
 

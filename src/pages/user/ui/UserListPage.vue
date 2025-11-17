@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { watch, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useUserStore } from '@/entities/user/model';
 import { userService } from '@/features/user/model';
 import { UserCreateBtn, UserPagination, UserSearch } from '@/features/user';
 import { UserListWidget } from '@/widgets/user';
 import { ROUTES } from '@/shared/routes';
 
+const { t } = useI18n();
 const router = useRouter();
 const userStore = useUserStore();
 
@@ -33,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <n-h1>Список пользователей</n-h1>
+    <n-h1>{{ t('pages.user.list') }}</n-h1>
 
     <UserCreateBtn />
     <UserSearch />

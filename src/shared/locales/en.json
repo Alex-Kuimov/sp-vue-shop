@@ -47,5 +47,41 @@
             "placeholder": "Search...",
             "button": "Search"
         }
+    },
+    "auth": {
+        "validation": {
+            "email_required": "Enter email",
+            "email_invalid": "Invalid email",
+            "password_required": "Enter password",
+            "password_min_length": "Password must be at least 8 characters"
+        },
+        "login": {
+            "form": {
+                "email_label": "Email:",
+                "email_placeholder": "Enter email",
+                "password_label": "Password:",
+                "password_placeholder": "Enter password",
+                "submit": "Sign in",
+                "loading": "Signing in..."
+            },
+            "success": "Login successful",
+            "error_prefix": "Login error: ",
+            "page_title": "Login"
+        }
+    },
+    "pages": {
+        "home": "Home",
+        "user": {
+            "list": "User list"
+        }
+    },
+    "widgets": {
+        "header": {
+            "logout": "Logout"
+        },
+        "sidebar": {
+            "home": "Home",
+            "users": "Users"
+        }
     }
 }

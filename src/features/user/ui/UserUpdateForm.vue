@@ -2,7 +2,9 @@
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ErrorMessage } from "@/shared/ui";
+import { useYupValidation } from '@/shared/lib/';
 import type { UserUpdateDTO } from '@/entities/user/model';
+import { userUpdateSchema } from '@/entities/user/model';
 
 const { t } = useI18n();
 
@@ -21,50 +23,58 @@ const form = ref<UserUpdateDTO>({
     email: ''
 });
 
+const { clientErrors, validate } = useYupValidation(userUpdateSchema, form);
+
 const loadData = ref<boolean>(false);
 
 watch(() => user, (data) => {
     if (data) {
-        form.value.name = data.name ?? ''
-        form.value.email = data.email ?? ''
+        form.value.name = data.name ?? '';
+        form.value.email = data.email ?? '';
     }
 }, { immediate: true });
 
+
 watch(() => loading, (newValue) => {
-    if (!newValue) {
-        loadData.value = false;
-    }
+    if (!newValue) loadData.value = false;
 });
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
     if (loading) {
-        return;
-    }
+        return
+    };
+
+    const valid = await validate();
+
+    if (!valid) {
+        return
+    };
 
     emit('submit', form.value);
     loadData.value = true;
-
 }
 </script>
 
 <template>
-    <n-form class="form" @submit.prevent="handleSubmit">
-        <n-form-item :label="t('user.update.form.name')" path="name">
-            <n-input v-model:value="form.name" id="name" type="text" :class="{ err: validationErrors?.name }"
-                :disabled="loading" :loading="loading" placeholder="" required />
-            <ErrorMessage :error="validationErrors?.name?.[0] || null" />
-        </n-form-item>
+    <NForm class="form" @submit.prevent="handleSubmit">
+        <NFormItem :label="t('user.update.form.name')" path="name">
+            <NInput v-model:value="form.name" id="name" type="text"
+                :class="{ err: clientErrors.name || validationErrors?.name }" :disabled="loading" placeholder=""
+                required />
+            <ErrorMessage :error="clientErrors.name?.[0] || validationErrors?.name?.[0] || null" />
+        </NFormItem>
 
-        <n-form-item :label="t('user.update.form.email')" path="email">
-            <n-input v-model:value="form.email" id="email" type="email" :class="{ err: validationErrors?.email }"
-                :disabled="loading" :loading="loading" placeholder="" required />
-            <ErrorMessage :error="validationErrors?.email?.[0] || null" />
-        </n-form-item>
+        <NFormItem :label="t('user.update.form.email')" path="email">
+            <NInput v-model:value="form.email" id="email" type="email"
+                :class="{ err: clientErrors.email || validationErrors?.email }" :disabled="loading" placeholder=""
+                required />
+            <ErrorMessage :error="clientErrors.email?.[0] || validationErrors?.email?.[0] || null" />
+        </NFormItem>
 
-        <n-button attr-type="submit" type="primary" :disabled="loading">
+        <NButton attr-type="submit" type="primary" :disabled="loading">
             {{ loadData ? t('user.update.form.loading') : t('buttons.save') }}
-        </n-button>
-    </n-form>
+        </NButton>
+    </NForm>
 </template>
 
 <style scoped>

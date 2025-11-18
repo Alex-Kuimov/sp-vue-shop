@@ -1,13 +1,14 @@
 import * as yup from 'yup';
+import { useI18n } from 'vue-i18n';
 
-export const userUpdateSchema = yup.object().shape({
+export const userUpdateSchema = (t: ReturnType<typeof useI18n>['t']) => yup.object().shape({
     name: yup
         .string()
-        .required("Имя обязательно")
-        .min(2, "Имя должно содержать минимум 2 символа"),
+        .required(t('validation.user.name_required'))
+        .min(2, t('validation.user.name_min')),
 
     email: yup
         .string()
-        .required("Email обязателен")
-        .email("Некорректный email"),
+        .required(t('validation.user.email_required'))
+        .email(t('validation.user.email_invalid')),
 });

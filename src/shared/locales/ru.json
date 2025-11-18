@@ -83,5 +83,13 @@
 			"home": "Главная",
 			"users": "Пользователи"
 		}
+	},
+	"validation": {
+		"user": {
+			"name_required": "Имя обязательно",
+			"name_min": "Имя должно содержать минимум 2 символа",
+			"email_required": "Email обязателен",
+			"email_invalid": "Некорректный email"
+		}
 	}
 }

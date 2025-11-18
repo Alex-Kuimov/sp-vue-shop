@@ -23,7 +23,7 @@ const form = ref<UserUpdateDTO>({
     email: ''
 });
 
-const { clientErrors, validate } = useYupValidation(userUpdateSchema, form);
+const { clientErrors, validate } = useYupValidation(userUpdateSchema(t), form);
 
 const loadData = ref<boolean>(false);
 

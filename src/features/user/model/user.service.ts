@@ -7,14 +7,14 @@ async function withStore<T>(fn: (store: ReturnType<typeof useUserStore>) => Prom
     const store = useUserStore();
     store.loading = true;
     store.errorMessage = null;
-    store.validationErrors = null;
+    store.errorMessages = null;
 
     try {
         return await fn(store);
     } catch (err) {
         const apiError = extractApiError(err);
         store.errorMessage = apiError.message;
-        store.validationErrors = apiError.errors ?? null;
+        store.errorMessages = apiError.errors ?? null;
         throw err;
     } finally {
         store.loading = false;

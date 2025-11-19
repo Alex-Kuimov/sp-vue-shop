@@ -1,18 +1,14 @@
 import { ref } from 'vue';
-import type { Ref } from 'vue';
 import type { AnyObjectSchema } from 'yup';
 import { ValidationError } from 'yup';
 
-export function useYupValidation<T extends Record<string, any>>(
-    schema: AnyObjectSchema,
-    form: Ref<T>
-) {
-    const clientErrors = ref<Record<string, string[]>>({});
+export function useYupValidation(schema: AnyObjectSchema) {
+    const clientErrors = ref<Record<string, string[]> | null>(null);
 
-    const validate = async () => {
+    const validate = async (form: Object) => {
         try {
-            await schema.validate(form.value, { abortEarly: false });
-            clientErrors.value = {};
+            await schema.validate(form, { abortEarly: false });
+            clientErrors.value = null;
             return true;
         } catch (err: any) {
             if (err instanceof ValidationError) {
@@ -31,9 +27,5 @@ export function useYupValidation<T extends Record<string, any>>(
         }
     };
 
-    const reset = () => {
-        clientErrors.value = {};
-    };
-
-    return { clientErrors, validate, reset };
+    return { clientErrors, validate };
 }

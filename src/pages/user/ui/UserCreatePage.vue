@@ -28,7 +28,7 @@ const handleCreate = async (formData: UserCreateDTO) => {
 
 <template>
     <n-h1>{{ t('user.create.page_title') }}</n-h1>
-    <UserCreateForm :validationErrors="userStore.validationErrors" :loading="userStore.loading"
+    <UserCreateForm :validationErrors="userStore.errorMessages" :loading="userStore.loading"
         @submit="handleCreate" />
 </template>
 

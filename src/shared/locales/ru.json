@@ -26,7 +26,7 @@
 				"name": "Имя:",
 				"email": "E-mail:",
 				"submit": "Сохранить",
-				"loading": "Сохранение..."
+				"sending": "Сохранение..."
 			}
 		},
 		"delete": {

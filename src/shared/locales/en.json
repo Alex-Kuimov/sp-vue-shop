@@ -42,10 +42,6 @@
                 "update": "Error updating user",
                 "load": "Error loading user"
             }
-        },
-        "search": {
-            "placeholder": "Search...",
-            "button": "Search"
         }
     },
     "auth": {
@@ -96,5 +92,9 @@
             "password_match": "Passwords must match",
             "role_required": "Role is required"
         }
+    },
+    "search_form": {
+        "placeholder": "Поиск...",
+        "button": "Найти"
     }
 }

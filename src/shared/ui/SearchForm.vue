@@ -17,9 +17,9 @@ const handleSubmit = () => {
 
 <template>
     <n-form class="form" @submit.prevent="handleSubmit">
-        <n-input v-model:value="search" id="search" type="text" :placeholder="t('user.search.placeholder')" />
+        <n-input v-model:value="search" id="search" type="text" :placeholder="t('search_form.placeholder')" />
         <n-button attr-type="submit" type="primary">
-            {{ t('user.search.button') }}
+            {{ t('search_form.button') }}
         </n-button>
     </n-form>
 </template>

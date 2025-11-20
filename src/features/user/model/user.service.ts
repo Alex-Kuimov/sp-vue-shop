@@ -30,9 +30,9 @@ export const userService = {
         });
     },
 
-    getItems(page: number = 1) {
+    getItems(page: number = 1, search: string = '') {
         return withStore(async (store) => {
-            const res = await getUsers(page);
+            const res = await getUsers(page, search);
             store.items = res.data;
             store.currentPage = res.current_page;
             store.totalPages = res.last_page;

@@ -6,17 +6,22 @@ const { t } = useI18n();
 
 const search = ref('');
 
+const emit = defineEmits<{
+    (e: 'search', str: string): void
+}>()
+
+const handleSubmit = () => {
+    emit('search', search.value);
+}
 </script>
 
 <template>
-    <n-form class="form">
+    <n-form class="form" @submit.prevent="handleSubmit">
         <n-input v-model:value="search" id="search" type="text" :placeholder="t('user.search.placeholder')" />
-
-        <n-button type="primary">
+        <n-button attr-type="submit" type="primary">
             {{ t('user.search.button') }}
         </n-button>
     </n-form>
-
 </template>
 
 <style scoped>
@@ -26,5 +31,4 @@ const search = ref('');
     gap: 10px;
     margin-bottom: 20px;
 }
-
 </style>

@@ -29,6 +29,10 @@ watch(() => userStore.currentPage, (page) => {
     });
 });
 
+const searchHandler = (search: string) => {
+    userService.getItems(1, search);
+};
+
 onMounted(() => {
     userService.getItems(userStore.currentPage);
 });
@@ -36,12 +40,9 @@ onMounted(() => {
 
 <template>
     <n-h1>{{ t('pages.user.list') }}</n-h1>
-
     <UserCreateBtn />
-    <UserSearch />
-
+    <UserSearch @search="searchHandler" />
     <UserListWidget :users="userStore.items" />
-
     <UserPagination v-model:page="userStore.currentPage" :total-pages="userStore.totalPages"
         @update:page="handlePageChange" />
 </template>

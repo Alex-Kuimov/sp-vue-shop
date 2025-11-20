@@ -18,7 +18,7 @@
                 "password_confirmation": "Password confirmation:",
                 "role": "Role:",
                 "submit": "Create",
-                "loading": "Creating..."
+                "sending": "Creating..."
             }
         },
         "update": {
@@ -89,7 +89,12 @@
             "name_required": "Name is required",
             "name_min": "Name must be at least 2 characters",
             "email_required": "Email is required",
-            "email_invalid": "Invalid email"
+            "email_invalid": "Invalid email",
+            "password_required": "Password is required",
+            "password_min": "Password must be at least 8 characters",
+            "confirm_password_required": "Password confirmation is required",
+            "password_match": "Passwords must match",
+            "role_required": "Role is required"
         }
     }
 }

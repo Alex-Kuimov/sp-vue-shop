@@ -62,7 +62,7 @@ const handleSubmit = () => {
         </n-form-item>
 
         <n-button attr-type="submit" type="primary" :disabled="loading">
-            {{ loading ? t('user.create.form.loading') : t('user.create.form.submit') }}
+            {{ loading ? t('user.create.form.sending') : t('user.create.form.submit') }}
         </n-button>
     </n-form>
 </template>

@@ -20,16 +20,16 @@ const user = ref<UserUpdateDTO | null>(null);
 const userID = computed(() => Number(route.params.id));
 const validationErrors = computed(() => userStore.errorMessages ?? clientErrors.value);
 
-const handleEdit = async (data: UserUpdateDTO) => {
+const handleEdit = async (formData: UserUpdateDTO) => {
     userStore.errorMessages = null;
     clientErrors.value = null;
 
-    if (!(await validate(data))) {
+    if (!(await validate(formData))) {
         return false
     };
 
     try {
-        await userService.updateItem(userID.value, data);
+        await userService.updateItem(userID.value, formData);
         notification.success(t('user.edit.success'));
     } catch (err) {
         console.error('Ошибка обновления пользователя', err);

@@ -18,7 +18,7 @@
 				"password_confirmation": "Подтверждение пароля:",
 				"role": "Роль:",
 				"submit": "Создать",
-				"loading": "Создаю..."
+				"sending": "Создаю..."
 			}
 		},
 		"update": {
@@ -85,11 +85,16 @@
 		}
 	},
 	"validation": {
-		"user": {
-			"name_required": "Имя обязательно",
-			"name_min": "Имя должно содержать минимум 2 символа",
-			"email_required": "Email обязателен",
-			"email_invalid": "Некорректный email"
-		}
+	    "user": {
+	        "name_required": "Имя обязательно",
+	        "name_min": "Имя должно содержать минимум 2 символа",
+	        "email_required": "Email обязателен",
+	        "email_invalid": "Некорректный email",
+	        "password_required": "Пароль обязателен",
+	        "password_min": "Пароль должен содержать минимум 8 символов",
+	        "confirm_password_required": "Подтверждение пароля обязательно",
+	        "password_match": "Пароли должны совпадать",
+	        "role_required": "Роль обязательна"
+	    }
 	}
 }

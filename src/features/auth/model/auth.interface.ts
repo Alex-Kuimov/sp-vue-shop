@@ -3,7 +3,7 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface LoginForm {
+export interface LoginData {
     email: string;
     password: string;
 }

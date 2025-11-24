@@ -4,7 +4,7 @@ import type { LoginRequest } from '../model/auth.interface';
 
 const loginApi = async (LoginData: LoginRequest) => {
     const { data } = await http.post(API.login(), LoginData);
-    return data.token;
+    return data.access_token;
 }
 
 const logoutApi = async () => {

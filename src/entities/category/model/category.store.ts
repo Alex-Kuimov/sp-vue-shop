@@ -2,7 +2,7 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import type { Category } from './category.interface';
 
-export const useUserStore = defineStore('category', () => {
+export const useCategoryStore = defineStore('category', () => {
     const items = ref<Category[]>([]);
     const item = ref<Category | null>(null);
 

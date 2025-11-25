@@ -44,6 +44,50 @@
 			}
 		}
 	},
+	"category": {
+		"create": {
+			"title": "Создать новую категорию",
+			"page_title": "Новая категория",
+			"form": {
+				"name": "Имя:",
+				"slug": "Слаг:",
+				"description": "Описание:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"submit": "Создать",
+				"sending": "Создаю..."
+			}
+		},
+		"update": {
+			"form": {
+				"name": "Имя:",
+				"slug": "Слаг:",
+				"description": "Описание:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"submit": "Сохранить",
+				"sending": "Сохранение..."
+			}
+		},
+		"delete": {
+			"button": "Удалить",
+			"confirm": "Вы уверены, что хотите удалить категорию?",
+			"success": "Категория успешно удалена"
+		},
+		"edit": {
+			"button": "Редактировать",
+			"page_title": "Редактировать категорию",
+			"success": "Категория успешно сохранена",
+			"errors": {
+				"update": "Ошибка обновления категории",
+				"load": "Ошибка загрузки категории"
+			}
+		}
+	},
 	"auth": {
 		"validation": {
 			"email_required": "Введите email",
@@ -69,6 +113,9 @@
 		"home": "Главная",
 		"user": {
 			"list": "Список пользователей"
+		},
+		"category": {
+			"list": "Список категорий"
 		}
 	},
 	"widgets": {
@@ -77,7 +124,8 @@
 		},
 		"sidebar": {
 			"home": "Главная",
-			"users": "Пользователи"
+			"users": "Пользователи",
+			"categories": "Категории"
 		}
 	},
 	"validation": {
@@ -91,6 +139,17 @@
 			"confirm_password_required": "Подтверждение пароля обязательно",
 			"password_match": "Пароли должны совпадать",
 			"role_required": "Роль обязательна"
+		},
+		"category": {
+			"name_required": "Название категории обязательно",
+			"name_min": "Название категории должно содержать минимум 2 символа",
+			"slug_required": "Slug обязателен",
+			"slug_min": "Slug должен содержать минимум 2 символа",
+			"description_required": "Описание обязательно",
+			"seo_title_required": "SEO заголовок обязателен",
+			"seo_description_required": "SEO описание обязательно",
+			"seo_keywords_required": "SEO ключевые слова обязательны",
+			"status_required": "Статус обязателен"
 		}
 	},
 	"search_form": {

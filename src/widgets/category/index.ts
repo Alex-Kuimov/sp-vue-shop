@@ -1,0 +1,1 @@
+export { default as CategoryListWidget } from './ui/CategoryListWidget.vue';

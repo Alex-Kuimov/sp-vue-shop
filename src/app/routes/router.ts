@@ -44,6 +44,22 @@ const routes: RouteRecordRaw[] = [
 				name: ROUTES.USER_EDIT.NAME,
 				path: ROUTES.USER_EDIT.PATH,
 				component: () => import('@/pages/user/ui/UserEditPage.vue')
+			},
+			{
+				name: ROUTES.CATEGORIES.NAME,
+				path: `${ROUTES.CATEGORIES.PATH}/page/:page?`,
+				component: () => import('@/pages/category/ui/CategoryListPage.vue'),
+				props: (route) => ({ page: Number(route.params.page) || 1 })
+			},
+			{
+				name: ROUTES.CATEGORY_CREATE.NAME,
+				path: ROUTES.CATEGORY_CREATE.PATH,
+				component: () => import('@/pages/category/ui/CategoryCreatePage.vue')
+			},
+			{
+				name: ROUTES.CATEGORY_EDIT.NAME,
+				path: ROUTES.CATEGORY_EDIT.PATH,
+				component: () => import('@/pages/category/ui/CategoryEditPage.vue')
 			}
 		]
 	}

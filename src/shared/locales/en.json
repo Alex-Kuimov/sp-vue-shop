@@ -44,6 +44,50 @@
             }
         }
     },
+    "category": {
+        "create": {
+            "title": "Create new category",
+            "page_title": "New category",
+            "form": {
+                "name": "Name:",
+                "slug": "Slug:",
+                "description": "Description:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "submit": "Create",
+                "sending": "Creating..."
+            }
+        },
+        "update": {
+            "form": {
+                "name": "Name:",
+                "slug": "Slug:",
+                "description": "Description:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "submit": "Save",
+                "sending": "Saving..."
+            }
+        },
+        "delete": {
+            "button": "Delete",
+            "confirm": "Are you sure you want to delete the category?",
+            "success": "Category deleted successfully"
+        },
+        "edit": {
+            "button": "Edit",
+            "page_title": "Edit category",
+            "success": "Category updated successfully",
+            "errors": {
+                "update": "Error updating category",
+                "load": "Error loading category"
+            }
+        }
+    },
     "auth": {
         "validation": {
             "email_required": "Enter email",
@@ -69,6 +113,9 @@
         "home": "Home",
         "user": {
             "list": "User list"
+        },
+        "category": {
+            "list": "Category list"
         }
     },
     "widgets": {
@@ -77,7 +124,8 @@
         },
         "sidebar": {
             "home": "Home",
-            "users": "Users"
+            "users": "Users",
+            "categories": "Categories"
         }
     },
     "validation": {
@@ -91,10 +139,21 @@
             "confirm_password_required": "Password confirmation is required",
             "password_match": "Passwords must match",
             "role_required": "Role is required"
+        },
+        "category": {
+            "name_required": "Name is required",
+            "name_min": "Name must be at least 2 characters",
+            "slug_required": "Slug is required",
+            "slug_min": "Slug must be at least 2 characters",
+            "description_required": "Description is required",
+            "seo_title_required": "SEO title is required",
+            "seo_description_required": "SEO description is required",
+            "seo_keywords_required": "SEO keywords are required",
+            "status_required": "Status is required"
         }
     },
     "search_form": {
-        "placeholder": "Поиск...",
-        "button": "Найти"
+        "placeholder": "Search...",
+        "button": "Find"
     }
 }

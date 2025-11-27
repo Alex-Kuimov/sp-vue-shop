@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { EditBtn } from '@/shared/ui';
+import { EditBtn, DeleteBtn } from '@/shared/ui';
 import { ROUTES } from '@/shared/routes/routes';
-import { CategoryDeleteBtn } from '@/features/category/';
 
 interface Props {
     id: number
@@ -11,6 +10,11 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const emit = defineEmits<{
+    (event: 'delete', id: number): void
+}>();
+
 </script>
 
 <template>
@@ -20,12 +24,9 @@ defineProps<Props>();
         <td>{{ slug }}</td>
         <td>{{ status }}</td>
         <td>
-            <EditBtn
-                :id="id"
-                :route-name="ROUTES.CATEGORY_EDIT.NAME"
-                :title-key="'category.edit.button'"
-            />
-            <CategoryDeleteBtn :id="id" />
+            <EditBtn :id="id" :route-name="ROUTES.CATEGORY_EDIT.NAME" :title-key="'category.edit.button'" />
+            <DeleteBtn :button-text="'category.delete.button'" :confirm-text="'category.delete.confirm'"
+                @confirm="emit('delete', id)" />
         </td>
     </tr>
 </template>

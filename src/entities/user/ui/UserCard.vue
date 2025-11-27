@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { EditBtn } from '@/shared/ui';
+import { EditBtn, DeleteBtn } from '@/shared/ui';
 import { ROUTES } from '@/shared/routes/routes';
-import { UserDeleteBtn } from '@/features/user/';
 
 interface Props {
     id: number
@@ -11,6 +10,11 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const emit = defineEmits<{
+    (event: 'delete', id: number): void
+}>();
+
 </script>
 
 <template>
@@ -20,12 +24,10 @@ defineProps<Props>();
         <td>{{ email }}</td>
         <td>{{ role }}</td>
         <td>
-            <EditBtn
-                :id="id"
-                :route-name="ROUTES.USER_EDIT.NAME"
-                :title-key="'user.edit.button'"
-            />
-            <UserDeleteBtn :id="id" />
+            <EditBtn :id="id" :route-name="ROUTES.USER_EDIT.NAME" :title-key="'user.edit.button'" />
+
+            <DeleteBtn :button-text="'user.delete.button'" :confirm-text="'user.delete.confirm'"
+                @confirm="emit('delete', id)" />
         </td>
     </tr>
 </template>

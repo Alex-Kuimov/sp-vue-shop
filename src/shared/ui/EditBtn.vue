@@ -26,3 +26,9 @@ const onClick = () => {
         {{ t(props.titleKey) }}
     </n-button>
 </template>
+
+<style scoped>
+.n-button {
+    margin-right: 10px;
+}
+</style>

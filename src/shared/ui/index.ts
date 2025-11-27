@@ -4,3 +4,4 @@ export { default as Pagination } from './Pagination.vue';
 export { default as SearchForm } from './SearchForm.vue';
 export { default as CreateBtn } from './CreateBtn.vue';
 export { default as EditBtn } from './EditBtn.vue';
+export { default as DeleteBtn } from './DeleteBtn.vue';

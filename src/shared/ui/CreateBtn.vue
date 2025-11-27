@@ -27,6 +27,7 @@ const onClick = () => {
 
 <style scoped>
 .n-button {
-    margin-bottom: 30px;
+    margin-right: 10px;
+    margin-bottom: 20px;
 }
 </style>

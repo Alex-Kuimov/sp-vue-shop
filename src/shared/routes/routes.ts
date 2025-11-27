@@ -31,4 +31,16 @@ export const ROUTES = {
         PATH: '/category/:id/edit',
         NAME: 'category-edit',
     },
+    ARTICLES: {
+        PATH: '/articles',
+        NAME: 'articles',
+    },
+    ARTICLE_CREATE: {
+        PATH: '/article/create',
+        NAME: 'article-create',
+    },
+    ARTICLE_EDIT: {
+        PATH: '/article/:id/edit',
+        NAME: 'article-edit',
+    },
 }

@@ -116,6 +116,9 @@
 		},
 		"category": {
 			"list": "Список категорий"
+		},
+		"article": {
+			"list": "Список статей"
 		}
 	},
 	"widgets": {
@@ -125,7 +128,58 @@
 		"sidebar": {
 			"home": "Главная",
 			"users": "Пользователи",
-			"categories": "Категории"
+			"categories": "Категории",
+			"articles": "Статьи"
+		}
+	},
+	"article": {
+		"create": {
+			"title": "Создать новую статью",
+			"page_title": "Новая статья",
+			"form": {
+				"title": "Заголовок:",
+				"slug": "Слаг:",
+				"content": "Содержание:",
+				"excerpt": "Выдержка:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"user_id": "ID пользователя:",
+				"category_id": "ID категории:",
+				"submit": "Создать",
+				"sending": "Создаю..."
+			}
+		},
+		"update": {
+			"form": {
+				"title": "Заголовок:",
+				"slug": "Слаг:",
+				"content": "Содержание:",
+				"excerpt": "Выдержка:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"user_id": "ID пользователя:",
+				"category_id": "ID категории:",
+				"submit": "Сохранить",
+				"sending": "Сохранение..."
+			}
+		},
+		"delete": {
+			"button": "Удалить",
+			"confirm": "Вы уверены, что хотите удалить статью?",
+			"success": "Статья успешно удалена"
+		},
+		"edit": {
+			"button": "Редактировать",
+			"page_title": "Редактировать статью",
+			"success": "Статья успешно сохранена",
+			"errors": {
+				"update": "Ошибка обновления статьи",
+				"load": "Ошибка загрузки статьи"
+			}
 		}
 	},
 	"validation": {
@@ -150,6 +204,20 @@
 			"seo_description_required": "SEO описание обязательно",
 			"seo_keywords_required": "SEO ключевые слова обязательны",
 			"status_required": "Статус обязателен"
+		},
+		"article": {
+			"title_required": "Заголовок обязателен",
+			"title_min": "Заголовок должен содержать минимум 2 символа",
+			"slug_required": "Slug обязателен",
+			"slug_min": "Slug должен содержать минимум 2 символа",
+			"content_required": "Содержание обязательно",
+			"excerpt_required": "Выдержка обязательна",
+			"seo_title_required": "SEO заголовок обязателен",
+			"seo_description_required": "SEO описание обязательно",
+			"seo_keywords_required": "SEO ключевые слова обязательны",
+			"status_required": "Статус обязателен",
+			"user_id_required": "ID пользователя обязателен",
+			"category_id_required": "ID категории обязателен"
 		}
 	},
 	"search_form": {

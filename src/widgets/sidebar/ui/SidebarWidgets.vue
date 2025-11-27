@@ -29,6 +29,13 @@ const { t } = useI18n();
                     </n-a>
                 </RouterLink>
             </n-li>
+            <n-li>
+                <RouterLink :to="{ name: ROUTES.ARTICLES.NAME, params: { page: 1 } }" #="{ navigate, href }" custom>
+                    <n-a :href="href" @click="navigate">
+                        {{ t('widgets.sidebar.articles') }}
+                    </n-a>
+                </RouterLink>
+            </n-li>
         </n-ul>
     </aside>
 </template>

@@ -1,0 +1,1 @@
+export { default as ArticleListWidget } from './ui/ArticleListWidget.vue';

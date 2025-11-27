@@ -116,6 +116,9 @@
         },
         "category": {
             "list": "Category list"
+        },
+        "article": {
+            "list": "Article list"
         }
     },
     "widgets": {
@@ -125,7 +128,58 @@
         "sidebar": {
             "home": "Home",
             "users": "Users",
-            "categories": "Categories"
+            "categories": "Categories",
+            "articles": "Articles"
+        }
+    },
+    "article": {
+        "create": {
+            "title": "Create new article",
+            "page_title": "New article",
+            "form": {
+                "title": "Title:",
+                "slug": "Slug:",
+                "content": "Content:",
+                "excerpt": "Excerpt:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "user_id": "User ID:",
+                "category_id": "Category ID:",
+                "submit": "Create",
+                "sending": "Creating..."
+            }
+        },
+        "update": {
+            "form": {
+                "title": "Title:",
+                "slug": "Slug:",
+                "content": "Content:",
+                "excerpt": "Excerpt:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "user_id": "User ID:",
+                "category_id": "Category ID:",
+                "submit": "Save",
+                "sending": "Saving..."
+            }
+        },
+        "delete": {
+            "button": "Delete",
+            "confirm": "Are you sure you want to delete the article?",
+            "success": "Article deleted successfully"
+        },
+        "edit": {
+            "button": "Edit",
+            "page_title": "Edit article",
+            "success": "Article updated successfully",
+            "errors": {
+                "update": "Error updating article",
+                "load": "Error loading article"
+            }
         }
     },
     "validation": {
@@ -150,6 +204,20 @@
             "seo_description_required": "SEO description is required",
             "seo_keywords_required": "SEO keywords are required",
             "status_required": "Status is required"
+        },
+        "article": {
+            "title_required": "Title is required",
+            "title_min": "Title must be at least 2 characters",
+            "slug_required": "Slug is required",
+            "slug_min": "Slug must be at least 2 characters",
+            "content_required": "Content is required",
+            "excerpt_required": "Excerpt is required",
+            "seo_title_required": "SEO title is required",
+            "seo_description_required": "SEO description is required",
+            "seo_keywords_required": "SEO keywords are required",
+            "status_required": "Status is required",
+            "user_id_required": "User ID is required",
+            "category_id_required": "Category ID is required"
         }
     },
     "search_form": {

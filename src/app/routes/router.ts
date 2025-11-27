@@ -60,6 +60,22 @@ const routes: RouteRecordRaw[] = [
 				name: ROUTES.CATEGORY_EDIT.NAME,
 				path: ROUTES.CATEGORY_EDIT.PATH,
 				component: () => import('@/pages/category/ui/CategoryEditPage.vue')
+			},
+			{
+				name: ROUTES.ARTICLES.NAME,
+				path: `${ROUTES.ARTICLES.PATH}/page/:page?`,
+				component: () => import('@/pages/article/ui/ArticleListPage.vue'),
+				props: (route) => ({ page: Number(route.params.page) || 1 })
+			},
+			{
+				name: ROUTES.ARTICLE_CREATE.NAME,
+				path: ROUTES.ARTICLE_CREATE.PATH,
+				component: () => import('@/pages/article/ui/ArticleCreatePage.vue')
+			},
+			{
+				name: ROUTES.ARTICLE_EDIT.NAME,
+				path: ROUTES.ARTICLE_EDIT.PATH,
+				component: () => import('@/pages/article/ui/ArticleEditPage.vue')
 			}
 		]
 	}

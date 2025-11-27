@@ -71,7 +71,7 @@ const handleSubmit = async () => {
         </n-form-item>
 
         <n-form-item :label="t('category.create.form.description')" path="description">
-            <n-input v-model:value="form.description" id="description" type="text"
+            <n-input v-model:value="form.description" id="description" type="textarea"
                 :class="{ err: validationErrors?.description }" :disabled="loading" placeholder="" required />
             <ErrorMessage :error="validationErrors?.description?.[0] || null" />
         </n-form-item>
@@ -83,7 +83,7 @@ const handleSubmit = async () => {
         </n-form-item>
 
         <n-form-item :label="t('category.create.form.seo_description')" path="seo_description">
-            <n-input v-model:value="form.seo_description" id="seo_description" type="text"
+            <n-input v-model:value="form.seo_description" id="seo_description" type="textarea"
                 :class="{ err: validationErrors?.seo_description }" :disabled="loading" placeholder="" required />
             <ErrorMessage :error="validationErrors?.seo_description?.[0] || null" />
         </n-form-item>

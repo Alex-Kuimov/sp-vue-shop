@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { UserEditBtn, UserDeleteBtn } from '@/features/user/';
+import { EditBtn } from '@/shared/ui';
+import { ROUTES } from '@/shared/routes/routes';
+import { UserDeleteBtn } from '@/features/user/';
 
 interface Props {
     id: number
@@ -18,7 +20,11 @@ defineProps<Props>();
         <td>{{ email }}</td>
         <td>{{ role }}</td>
         <td>
-            <UserEditBtn :id="id" />
+            <EditBtn
+                :id="id"
+                :route-name="ROUTES.USER_EDIT.NAME"
+                :title-key="'user.edit.button'"
+            />
             <UserDeleteBtn :id="id" />
         </td>
     </tr>

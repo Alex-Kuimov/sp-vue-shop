@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { CategoryEditBtn, CategoryDeleteBtn } from '@/features/category/';
+import { EditBtn } from '@/shared/ui';
+import { ROUTES } from '@/shared/routes/routes';
+import { CategoryDeleteBtn } from '@/features/category/';
 
 interface Props {
     id: number
@@ -18,7 +20,11 @@ defineProps<Props>();
         <td>{{ slug }}</td>
         <td>{{ status }}</td>
         <td>
-            <CategoryEditBtn :id="id" />
+            <EditBtn
+                :id="id"
+                :route-name="ROUTES.CATEGORY_EDIT.NAME"
+                :title-key="'category.edit.button'"
+            />
             <CategoryDeleteBtn :id="id" />
         </td>
     </tr>

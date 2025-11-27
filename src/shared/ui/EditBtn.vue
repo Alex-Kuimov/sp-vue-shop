@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { ROUTES } from '@/shared/routes/routes';
+
+interface Props {
+    id: number;
+    routeName: string;
+    titleKey: string;
+}
+
+const props = defineProps<Props>();
 
 const { t } = useI18n();
-
-const { id } = defineProps<{ id: number }>();
 const router = useRouter();
 
 const onClick = () => {
     router.push({
-        name: ROUTES.USER_EDIT.NAME,
-        params: { id },
+        name: props.routeName,
+        params: { id: props.id },
     });
 }
 </script>
 
 <template>
     <n-button @click="onClick">
-        {{ t('user.edit.button') }}
+        {{ t(props.titleKey) }}
     </n-button>
 </template>

@@ -4,8 +4,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useCategoryStore } from '@/entities/category/model';
 import { categoryService } from '@/features/category/model';
-import { CategoryCreateBtn } from '@/features/category';
-import { Pagination, SearchForm } from '@/shared/ui';
+import { Pagination, SearchForm, CreateBtn } from '@/shared/ui';
 import { CategoryListWidget } from '@/widgets/category';
 import { ROUTES } from '@/shared/routes';
 
@@ -41,7 +40,7 @@ onMounted(() => {
 
 <template>
     <n-h1>{{ t('pages.category.list') }}</n-h1>
-    <CategoryCreateBtn />
+    <CreateBtn :route-name="ROUTES.CATEGORY_CREATE.NAME" :title-key="'category.create.title'" />
     <SearchForm @search="searchHandler" />
     <CategoryListWidget :items="categoryStore.items" />
     <Pagination v-model:page="categoryStore.currentPage" :total-pages="categoryStore.totalPages"

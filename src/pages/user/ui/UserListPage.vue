@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useUserStore } from '@/entities/user/model';
 import { userService } from '@/features/user/model';
-import { UserCreateBtn, UserPagination, UserSearch } from '@/features/user';
+import { Pagination, SearchForm, CreateBtn } from '@/shared/ui';
 import { UserListWidget } from '@/widgets/user';
 import { ROUTES } from '@/shared/routes';
 
@@ -29,6 +29,10 @@ watch(() => userStore.currentPage, (page) => {
     });
 });
 
+const searchHandler = (search: string) => {
+    userService.getItems(1, search);
+};
+
 onMounted(() => {
     userService.getItems(userStore.currentPage);
 });
@@ -36,12 +40,9 @@ onMounted(() => {
 
 <template>
     <n-h1>{{ t('pages.user.list') }}</n-h1>
-
-    <UserCreateBtn />
-    <UserSearch />
-
+    <CreateBtn :route-name="ROUTES.USER_CREATE.NAME" :title-key="'user.create.title'" />
+    <SearchForm @search="searchHandler" />
     <UserListWidget :users="userStore.items" />
-
-    <UserPagination v-model:page="userStore.currentPage" :total-pages="userStore.totalPages"
+    <Pagination v-model:page="userStore.currentPage" :total-pages="userStore.totalPages"
         @update:page="handlePageChange" />
 </template>

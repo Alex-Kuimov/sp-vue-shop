@@ -7,9 +7,9 @@ const getUser = async (id: number) => {
     return data;
 }
 
-const getUsers = async (page: number = 1) => {
+const getUsers = async (page: number = 1, search: string = '') => {
     const res = await http.get<{ data: User[], current_page: number, last_page: number }>(USER_API.list(), {
-        params: { page }
+        params: { page, search }
     });
     return res.data;
 }

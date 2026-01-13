@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
 
 	const loading = ref(false);
 	const errorMessage = ref<string | null>(null);
-	const validationErrors = ref<Record<string, string[]> | null>(null);
+	const errorMessages = ref<Record<string, string[]> | null>(null);
 
 	const currentPage = ref<number>(1);
 	const totalPages = ref<number>(1);
@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', () => {
 		item,
 		loading,
 		errorMessage,
-		validationErrors,
+		errorMessages,
 		currentPage,
 		totalPages,
 	};

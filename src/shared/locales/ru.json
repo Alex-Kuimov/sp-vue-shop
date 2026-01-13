@@ -18,7 +18,7 @@
 				"password_confirmation": "Подтверждение пароля:",
 				"role": "Роль:",
 				"submit": "Создать",
-				"loading": "Создаю..."
+				"sending": "Создаю..."
 			}
 		},
 		"update": {
@@ -26,7 +26,7 @@
 				"name": "Имя:",
 				"email": "E-mail:",
 				"submit": "Сохранить",
-				"loading": "Сохранение..."
+				"sending": "Сохранение..."
 			}
 		},
 		"delete": {
@@ -42,10 +42,50 @@
 				"update": "Ошибка обновления пользователя",
 				"load": "Ошибка загрузки пользователя"
 			}
+		}
+	},
+	"category": {
+		"create": {
+			"title": "Создать новую категорию",
+			"page_title": "Новая категория",
+			"form": {
+				"name": "Имя:",
+				"slug": "Слаг:",
+				"description": "Описание:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"submit": "Создать",
+				"sending": "Создаю..."
+			}
 		},
-		"search": {
-			"placeholder": "Поиск...",
-			"button": "Найти"
+		"update": {
+			"form": {
+				"name": "Имя:",
+				"slug": "Слаг:",
+				"description": "Описание:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"submit": "Сохранить",
+				"sending": "Сохранение..."
+			}
+		},
+		"delete": {
+			"button": "Удалить",
+			"confirm": "Вы уверены, что хотите удалить категорию?",
+			"success": "Категория успешно удалена"
+		},
+		"edit": {
+			"button": "Редактировать",
+			"page_title": "Редактировать категорию",
+			"success": "Категория успешно сохранена",
+			"errors": {
+				"update": "Ошибка обновления категории",
+				"load": "Ошибка загрузки категории"
+			}
 		}
 	},
 	"auth": {
@@ -73,6 +113,12 @@
 		"home": "Главная",
 		"user": {
 			"list": "Список пользователей"
+		},
+		"category": {
+			"list": "Список категорий"
+		},
+		"article": {
+			"list": "Список статей"
 		}
 	},
 	"widgets": {
@@ -81,7 +127,59 @@
 		},
 		"sidebar": {
 			"home": "Главная",
-			"users": "Пользователи"
+			"users": "Пользователи",
+			"categories": "Категории",
+			"articles": "Статьи"
+		}
+	},
+	"article": {
+		"create": {
+			"title": "Создать новую статью",
+			"page_title": "Новая статья",
+			"form": {
+				"title": "Заголовок:",
+				"slug": "Слаг:",
+				"content": "Содержание:",
+				"excerpt": "Выдержка:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"user_id": "ID пользователя:",
+				"category_id": "ID категории:",
+				"submit": "Создать",
+				"sending": "Создаю..."
+			}
+		},
+		"update": {
+			"form": {
+				"title": "Заголовок:",
+				"slug": "Слаг:",
+				"content": "Содержание:",
+				"excerpt": "Выдержка:",
+				"seo_title": "SEO Title:",
+				"seo_description": "SEO Description:",
+				"seo_keywords": "SEO Keywords:",
+				"status": "Статус:",
+				"user_id": "ID пользователя:",
+				"category_id": "ID категории:",
+				"submit": "Сохранить",
+				"sending": "Сохранение..."
+			}
+		},
+		"delete": {
+			"button": "Удалить",
+			"confirm": "Вы уверены, что хотите удалить статью?",
+			"success": "Статья успешно удалена"
+		},
+		"edit": {
+			"button": "Редактировать",
+			"page_title": "Редактировать статью",
+			"success": "Статья успешно сохранена",
+			"errors": {
+				"update": "Ошибка обновления статьи",
+				"load": "Ошибка загрузки статьи"
+			}
 		}
 	},
 	"validation": {
@@ -89,7 +187,41 @@
 			"name_required": "Имя обязательно",
 			"name_min": "Имя должно содержать минимум 2 символа",
 			"email_required": "Email обязателен",
-			"email_invalid": "Некорректный email"
+			"email_invalid": "Некорректный email",
+			"password_required": "Пароль обязателен",
+			"password_min": "Пароль должен содержать минимум 8 символов",
+			"confirm_password_required": "Подтверждение пароля обязательно",
+			"password_match": "Пароли должны совпадать",
+			"role_required": "Роль обязательна"
+		},
+		"category": {
+			"name_required": "Название категории обязательно",
+			"name_min": "Название категории должно содержать минимум 2 символа",
+			"slug_required": "Slug обязателен",
+			"slug_min": "Slug должен содержать минимум 2 символа",
+			"description_required": "Описание обязательно",
+			"seo_title_required": "SEO заголовок обязателен",
+			"seo_description_required": "SEO описание обязательно",
+			"seo_keywords_required": "SEO ключевые слова обязательны",
+			"status_required": "Статус обязателен"
+		},
+		"article": {
+			"title_required": "Заголовок обязателен",
+			"title_min": "Заголовок должен содержать минимум 2 символа",
+			"slug_required": "Slug обязателен",
+			"slug_min": "Slug должен содержать минимум 2 символа",
+			"content_required": "Содержание обязательно",
+			"excerpt_required": "Выдержка обязательна",
+			"seo_title_required": "SEO заголовок обязателен",
+			"seo_description_required": "SEO описание обязательно",
+			"seo_keywords_required": "SEO ключевые слова обязательны",
+			"status_required": "Статус обязателен",
+			"user_id_required": "ID пользователя обязателен",
+			"category_id_required": "ID категории обязателен"
 		}
+	},
+	"search_form": {
+		"placeholder": "Поиск...",
+		"button": "Найти"
 	}
 }

@@ -18,7 +18,7 @@
                 "password_confirmation": "Password confirmation:",
                 "role": "Role:",
                 "submit": "Create",
-                "loading": "Creating..."
+                "sending": "Creating..."
             }
         },
         "update": {
@@ -26,7 +26,7 @@
                 "name": "Name:",
                 "email": "Email:",
                 "submit": "Save",
-                "loading": "Saving..."
+                "sending": "Saving..."
             }
         },
         "delete": {
@@ -42,10 +42,50 @@
                 "update": "Error updating user",
                 "load": "Error loading user"
             }
+        }
+    },
+    "category": {
+        "create": {
+            "title": "Create new category",
+            "page_title": "New category",
+            "form": {
+                "name": "Name:",
+                "slug": "Slug:",
+                "description": "Description:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "submit": "Create",
+                "sending": "Creating..."
+            }
         },
-        "search": {
-            "placeholder": "Search...",
-            "button": "Search"
+        "update": {
+            "form": {
+                "name": "Name:",
+                "slug": "Slug:",
+                "description": "Description:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "submit": "Save",
+                "sending": "Saving..."
+            }
+        },
+        "delete": {
+            "button": "Delete",
+            "confirm": "Are you sure you want to delete the category?",
+            "success": "Category deleted successfully"
+        },
+        "edit": {
+            "button": "Edit",
+            "page_title": "Edit category",
+            "success": "Category updated successfully",
+            "errors": {
+                "update": "Error updating category",
+                "load": "Error loading category"
+            }
         }
     },
     "auth": {
@@ -73,6 +113,12 @@
         "home": "Home",
         "user": {
             "list": "User list"
+        },
+        "category": {
+            "list": "Category list"
+        },
+        "article": {
+            "list": "Article list"
         }
     },
     "widgets": {
@@ -81,7 +127,59 @@
         },
         "sidebar": {
             "home": "Home",
-            "users": "Users"
+            "users": "Users",
+            "categories": "Categories",
+            "articles": "Articles"
+        }
+    },
+    "article": {
+        "create": {
+            "title": "Create new article",
+            "page_title": "New article",
+            "form": {
+                "title": "Title:",
+                "slug": "Slug:",
+                "content": "Content:",
+                "excerpt": "Excerpt:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "user_id": "User ID:",
+                "category_id": "Category ID:",
+                "submit": "Create",
+                "sending": "Creating..."
+            }
+        },
+        "update": {
+            "form": {
+                "title": "Title:",
+                "slug": "Slug:",
+                "content": "Content:",
+                "excerpt": "Excerpt:",
+                "seo_title": "SEO Title:",
+                "seo_description": "SEO Description:",
+                "seo_keywords": "SEO Keywords:",
+                "status": "Status:",
+                "user_id": "User ID:",
+                "category_id": "Category ID:",
+                "submit": "Save",
+                "sending": "Saving..."
+            }
+        },
+        "delete": {
+            "button": "Delete",
+            "confirm": "Are you sure you want to delete the article?",
+            "success": "Article deleted successfully"
+        },
+        "edit": {
+            "button": "Edit",
+            "page_title": "Edit article",
+            "success": "Article updated successfully",
+            "errors": {
+                "update": "Error updating article",
+                "load": "Error loading article"
+            }
         }
     },
     "validation": {
@@ -89,7 +187,41 @@
             "name_required": "Name is required",
             "name_min": "Name must be at least 2 characters",
             "email_required": "Email is required",
-            "email_invalid": "Invalid email"
+            "email_invalid": "Invalid email",
+            "password_required": "Password is required",
+            "password_min": "Password must be at least 8 characters",
+            "confirm_password_required": "Password confirmation is required",
+            "password_match": "Passwords must match",
+            "role_required": "Role is required"
+        },
+        "category": {
+            "name_required": "Name is required",
+            "name_min": "Name must be at least 2 characters",
+            "slug_required": "Slug is required",
+            "slug_min": "Slug must be at least 2 characters",
+            "description_required": "Description is required",
+            "seo_title_required": "SEO title is required",
+            "seo_description_required": "SEO description is required",
+            "seo_keywords_required": "SEO keywords are required",
+            "status_required": "Status is required"
+        },
+        "article": {
+            "title_required": "Title is required",
+            "title_min": "Title must be at least 2 characters",
+            "slug_required": "Slug is required",
+            "slug_min": "Slug must be at least 2 characters",
+            "content_required": "Content is required",
+            "excerpt_required": "Excerpt is required",
+            "seo_title_required": "SEO title is required",
+            "seo_description_required": "SEO description is required",
+            "seo_keywords_required": "SEO keywords are required",
+            "status_required": "Status is required",
+            "user_id_required": "User ID is required",
+            "category_id_required": "Category ID is required"
         }
+    },
+    "search_form": {
+        "placeholder": "Search...",
+        "button": "Find"
     }
 }
